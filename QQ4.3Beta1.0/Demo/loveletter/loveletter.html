@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+	每个人心中都有一个女孩,就像里面的那首歌唱的,
+	"我明白,我的爱,适合一直深埋,我不明白,我这么胆小,怎么恋爱.."
+	当时光带走一切,只剩我一个人发呆..
+	QQ:1336006643
+	Date:2013.7.12
+	Author:Uri
+-->
+<!--
+	适用浏览器：FireFox，Chrome、Safari、傲游、搜狗. 不支持IE8、360、Opera、世界之窗。
+	原版:http://sc.chinaz.com/jiaobendemo.aspx?downloadid=134890718549
+-->
+<html class="no-js" lang="en">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Love Letter For U</title>
+		<script src="res/modernizr.js" type="text/javascript" charset="utf-8"></script>
+		<script src="res/pwd.js" type="text/javascript" charset="utf-8"></script>
+        <!--[if IE 8]>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+			<script>	
+				$(document).ready(function(){
+					$("#contact").addClass("target");
+					$("#flip2back, #close").click(function(e){
+						$(".target").removeClass("target");
+						e.preventDefault();
+					});
+					$("#open, #flip").click(function(e){
+						var $anchor = $(this);
+            			$($anchor.attr('href')).addClass("target");
+						e.preventDefault();
+					});
+				});
+			</script>
+        <![endif]-->
+		<link rel="stylesheet" href="res/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+		body{
+			height: 450px;
+			background: url('res/bg.jpg') no-repeat;
+  			background-size: 100% 100%;
+		}
+		</style>
+	</head>
+
+	<body>
+		<section class="container" id="contact" >
+			<form class="flip">
+				<div class="front">
+					<h2>Uri</h2>
+					<p>51 jinhua Arrêt de Bus</p>
+					<p>430073 HUST Wuhan China</p>
+					<a id="flip2back" href="#">Drop me a line !</a>
+				</div>
+				<div class="back" id="content">
+					<div id="letter">
+						<div class="container">
+							<div class="flip">
+				  				<div class="front"></div>
+				  				<div class="back">
+									<p id="name2">Dear Lee:</p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>每个人,都有一个世界,安静而孤独.</span></p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>怀旧,不是因那个时代多么好,而是那个时候,你年轻.</span></p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>就像林萧说的,"风吹起如花般破碎的流年,而你的笑容摇晃摇晃,成为我命途中最美的点缀".</span></p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>我们都希望在最好的年华遇见一个人,可往往是遇见了一个人,才迎来最好的年华.</span></p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>谢谢你的微笑,曾经慌乱过我的年华.一个笑就击败了一辈子.</span></p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>总有一个妳,一直住在心里,却告别在生活里.为了等你,我错过了等我的人.</span></p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"人生何处不相逢,但有些转身,真的就是一生,从此后会无期,永不相见" ————林徽因</span></p>
+								</div>
+							</div>
+						</div>
+						<a id="close" href="#">Close</a>
+						<div class="backcontent">
+							<br>
+							<br>
+							<br>
+							<br>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>I do not travel around the world, so long as I found u. May.</span></p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>I don't think u know that u are the light of my world and I'm the luckiest person to know u.</span></p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To the world u maybe one person,but to one person u are the world.</span></p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>The last three words sung for u,</span></p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Ich Liebe dich.</span></p>
+							<div>
+								<p><span style="text-decoration:underline;">With love,</span></p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-decoration:underline;">Uri.</span>
+							</div>
+						</div>
+					</div>
+					<div id="top">
+						<a id="flip" href="#contact">Flip</a>
+					</div>
+					<div id="lid" class="container">
+	  					<div class="flip">    
+	  						<div class="front">
+	  							<center>
+									<div>
+										<label for="name">Your Name :</label>
+										<input type="text" id="name" name="name">
+									</div>
+								</center>
+								<center>
+									<div>
+										<label for="password">Password &nbsp;:</label>
+										<input type="password" id="password" name="password" onkeyup="checkstr()">
+									</div>
+								</center>
+								<a id="open" href="#content" style="display:none;">Open</a>
+							</div>
+							<div class="back"></div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</section>
+		<audio autoplay controls loop hidden>
+			<source type="audio/mp3" src="res/Unspeakablelove.mp3">
+			<source type="audio/ogg" src="res/Unspeakablelove.ogg">
+		</audio>
+	</body>
+</html>

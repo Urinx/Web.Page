@@ -1,0 +1,24 @@
+<style type="text/css">
+body{
+	background: url(res/1.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var i=1;
+	
+	setInterval(function () {
+		document.getElementsByTagName('body')[0].style.backgroundImage='url(res/'+i+'.jpg)';
+		i++;
+		if(i==27){i=1;}
+	},9000);
+}
+
+
+</script>
+
+<body>
+</body>

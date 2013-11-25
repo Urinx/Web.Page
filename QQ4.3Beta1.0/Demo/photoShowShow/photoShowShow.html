@@ -1,0 +1,408 @@
+<!--
+	转眼间就要开学了，回过头来看看，从6.15开始，已有两个多月。
+	I’m a little used to calling outside your name,
+　　I won't see you tonight so I can keep from going insane,
+　　But I don't know enough, I get some kind of lazy day.
+	时光不解催人老，至少，有你陪伴，真好。
+	距离折煞人，伶仃伴孤魂。
+	昨日雨落望长安，叹一声，长夜漫漫。
+	Cause It's hard for me to lose in my life I've found
+　　Only time will tell and I will figure out.
+	QQ:1336006643
+	Date:2013.8.22
+	Author:Uri
+-->
+<meta charset="utf-8">
+<style type="text/css">
+body{
+	background: url(res/bg2.jpg) no-repeat;
+	background-size: 100% 100%;
+	height: 755px;
+}
+canvas{
+	background: rgba(0,0,0,0.2);
+}
+#div1,#div2,#div3{
+	position: absolute;
+	border: 1px solid rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.4);
+	color: rgba(255,255,255,0.9);
+}
+div button{
+	cursor: pointer;
+	border: none;
+}
+div input,div select{
+	border: none;
+}
+#div1{
+	top: 30px;
+	left: 60px;
+	width: 423px;
+	height: 280px;
+}
+#div1 div,#div1 canvas{
+	margin: 5px;
+}
+#div2{
+	top: 335px;
+	left: 60px;
+	width: 423px;
+	height: 260px;
+}
+#div2 div,#div2 canvas{
+	margin: 5px;
+}
+#div3{
+	top: 30px;
+	left: 500px;
+	width: 810px;
+	height: 565px;
+}
+#div3 div,#div3 canvas{
+	margin: 5px;
+}
+#div3 audio{
+	float: right;
+	position: relative;
+	top: -30px;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function(){
+	canvas1();
+	canvas2();
+	canvas3();
+}
+
+function canvas1(){
+	var canvas1=document.getElementById('canvas1');
+	var btn1=document.getElementById('btn1');
+	var ipu1=document.getElementById('ipu1');
+	var can1=canvas1.getContext('2d');
+	var w=200;
+	var h=200;
+
+	var img=new Image();
+	img.src='res/loli1.jpg';
+	
+	ipu1.onclick=function(){
+		this.value='';
+	}
+	
+	img.onload=function(){
+		can1.drawImage(img,0,0,w,h);
+		var imgdas=can1.getImageData(0,0,w,h);
+		
+		btn1.onclick=function(){
+			var k=ipu1.value;
+			if (k>0 && k<=1) {
+				var arr=randomArr(w*h,w*h*k);
+				var newimgdas=can1.createImageData(w,h);
+				for (var i = 0; i < arr.length; i++) {
+					newimgdas.data[4*arr[i]]=imgdas.data[4*arr[i]];
+					newimgdas.data[4*arr[i]+1]=imgdas.data[4*arr[i]+1];
+					newimgdas.data[4*arr[i]+2]=imgdas.data[4*arr[i]+2];
+					newimgdas.data[4*arr[i]+3]=255;
+				};
+				can1.clearRect(210,0,w,h);
+				can1.putImageData(newimgdas,210,0);
+			}
+			else{
+				alert('Please input a number between 0-1!!!');
+			}
+		}
+	}
+
+}
+
+function randomArr(all,parts){
+	var arr=[];
+	var newArr=[];
+	for (var i = 0; i < all; i++) {
+		arr.push(i);
+	};
+	for (var i = 0; i < parts; i++) {
+		newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1));
+	};
+	return newArr;
+}
+
+
+function canvas2(){
+	var canvas2=document.getElementById('canvas2');
+	var btn2=document.getElementById('btn2');
+	var ipu2=document.getElementById('choose');
+	var can2=canvas2.getContext('2d');
+	var w=200;
+	var h=200;
+
+	var img=new Image();
+	img.src='res/loli2.jpg';
+
+	img.onload=function(){
+		can2.drawImage(img,0,0,w,h);
+		var imgdas=can2.getImageData(0,0,w,h);
+
+		btn2.onclick=function(){
+			var k=ipu2.value;
+			var temp=[];
+			var newimgdas=can2.createImageData(w,h);
+
+			switch(k){
+				case '1':
+				temp=set1(imgdas.data);
+				break;
+
+				case '2':
+				temp=set2(imgdas.data,0.1);
+				break;
+
+				case '3':
+				temp=set2(imgdas.data,0.3);
+				break;
+
+				case '4':
+				temp=set2(imgdas.data,0.5);
+				break;
+
+				case '5':
+				temp=set3(imgdas.data);
+				break;
+
+				case '6':
+				temp=set4(imgdas.data);
+				break;
+
+				case '7':
+				temp=set5(imgdas.data);
+				break;
+
+				case '8':
+				temp=set6(imgdas.data);
+				break;
+
+				default:
+				alert('I\'m sorry to told you that this ain\'t avalible now.');
+				break;
+			}
+			putColor(newimgdas,temp);
+			can2.clearRect(210,0,w,h);
+			can2.putImageData(newimgdas,210,0);
+		}
+	}
+
+	function set1(arr){
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=255-arr[i];
+				newArr[i+1]=255-arr[i+1];
+				newArr[i+2]=255-arr[i+2];
+				newArr[i+3]=255;
+			};
+		return newArr;
+	}
+
+	function set2(arr,k){
+		var rarr=randomArr(w*h,w*h*k);
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=arr[i];
+				newArr[i+1]=arr[i+1];
+				newArr[i+2]=arr[i+2];
+				newArr[i+3]=255;
+			};
+		for (var i = 0; i < rarr.length; i++) {
+			newArr[4*rarr[i]]=Math.floor(Math.random()*255);
+			newArr[4*rarr[i]+1]=Math.floor(Math.random()*255);
+			newArr[4*rarr[i]+2]=Math.floor(Math.random()*255);
+			newArr[4*rarr[i]+3]=255;
+		};
+		return newArr;
+	}
+
+	function set3(arr){
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=arr[i];
+				newArr[i+1]=arr[i+1];
+				newArr[i+2]=arr[i+2];
+				newArr[i+3]=125;
+			};
+		return newArr;
+	}
+
+	function set4(arr){
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=arr[i]-50;
+				newArr[i+1]=arr[i+1]-50;
+				newArr[i+2]=arr[i+2]-50;
+				newArr[i+3]=255;
+			};
+		return newArr;
+	}
+
+	function set5(arr){
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=arr[i]>125?255:0;
+				newArr[i+1]=arr[i+1]>125?255:0;
+				newArr[i+2]=arr[i+2]>125?255:0;
+				newArr[i+3]=255;
+			};
+		return newArr;
+	}
+
+	function set6(arr){
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=arr[i]>125?255:0;
+				newArr[i+1]=arr[i+1];
+				newArr[i+2]=arr[i+2];
+				newArr[i+3]=255;
+			};
+		return newArr;
+	}
+}
+
+
+function putColor(obj,arr){
+	for (var i = 0; i < arr.length; i++) {
+		obj.data[i]=arr[i];
+	};
+}
+
+
+function canvas3(){
+	var canvas3=document.getElementById('canvas3');
+	var btn3=document.getElementById('btn3');
+	var ipu3=document.getElementById('size');
+	var can3=canvas3.getContext('2d');
+	var w=400;
+	var h=500;
+
+	var img=new Image();
+	img.src='res/lauren.jpg';
+
+	img.onload=function(){
+		can3.drawImage(img,0,0,w,h);
+		var imgdas=can3.getImageData(0,0,w,h);
+
+		btn3.onclick=function(){
+			var k=ipu3.value;
+			var temp=[];
+			var newimgdas=can3.createImageData(w,h);
+
+			switch(k){
+				case '1':
+				temp=Mosaic(imgdas.data,10,w,h);
+				break;
+
+				case '2':
+				temp=Mosaic(imgdas.data,8,w,h);
+				break;
+
+				case '3':
+				temp=Mosaic(imgdas.data,5,w,h);
+				break;
+
+				default:break;
+			}
+			putColor(newimgdas,temp);
+			can3.clearRect(400,0,w,h);
+			can3.putImageData(newimgdas,400,0);
+		}
+	}
+
+	function Mosaic(arr,l,w,h){
+		var newArr=[];
+		var tmp=[];
+		var x=0;
+		var y=0;
+		for (var i = 0; i < h/l; i++) {
+			for (var j = 0; j < w/l; j++) {
+				x=Math.floor(Math.random()*l);
+				y=Math.floor(Math.random()*l);
+				var z=j*l+x+(i*l+y)*w;
+				tmp[0]=arr[4*z];
+				tmp[1]=arr[4*z+1];
+				tmp[2]=arr[4*z+2];
+				tmp[3]=255;
+
+				for (var m = 0; m < l; m++) {
+					for (var n = 0; n < l; n++) {
+						z=j*l+n+(i*l+m)*w;
+						newArr[4*z]=tmp[0];
+						newArr[4*z+1]=tmp[1];
+						newArr[4*z+2]=tmp[2];
+						newArr[4*z+3]=tmp[3];
+					};
+				};
+			};
+		};
+		return newArr;
+	}
+}
+</script>
+
+
+<body>
+
+<!--模糊-->
+<div id="div1">
+	<canvas id="canvas1" width="410" height="200"></canvas>
+	<div>
+		去除图像的像素点<br>
+		请输入余留范围(between 0-1):
+		<input type="text" id="ipu1"><br>
+		<button id="btn1">Output</button>
+	</div>
+</div>
+
+<!--滤镜-->
+<div id="div2">
+	<canvas id="canvas2" width="410" height="200"></canvas>
+	<div>
+		图片处理<br>
+		请选择特效:
+		<select id="choose">
+			<option value="1">反色</option>
+			<optgroup label="噪点">
+				<option value="2">噪点0.1</option>
+				<option value="3">噪点0.3</option>
+				<option value="4">噪点0.5</option>
+			</optgroup>
+			<option value="5">透明</option>
+			<option value="6">暗淡</option>
+			<option value="7">高亮</option>
+			<option value="8">水彩</option>
+			<option value="">变形</option>
+			<option value="">老旧</option>
+			<option value="">模糊</option>
+			<option value="">素描</option>
+		</select>
+		<button id="btn2">Output</button>
+	</div>
+</div>
+
+<!--打码-->
+<div id="div3">
+	<canvas id="canvas3" width="800" height="500"></canvas>
+	<div>
+		大叔教你如何打码<br>
+		请选择打码尺度:
+		<select id="size">
+			<option value="1">大尺度</option>
+			<option value="2">中尺度</option>
+			<option value="3">小尺度</option>
+		</select>
+		<button id="btn3">Output</button>
+	</div>
+	<audio autoplay loop controls>
+		<source src="res/FreeLoop.mp3">
+	</audio>
+</div>
+
+</body>

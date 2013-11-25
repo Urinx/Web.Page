@@ -1,0 +1,240 @@
+<head>
+<!--
+	光辉岁月！献给曾经强大的火箭队.
+	看完后好感动，唉，过去的青春一去不返！怀念曾经的火箭，怀念曾经的自己。|-_-|
+	推荐大家看一下，传送门：http://www.bilibili.tv/video/av532091/
+	QQ:1336006643
+	Date:2013.4.14
+	Author:Uri
+-->
+<title>Demo.MagicCircle</title>
+<meta charset="utf-8">
+<style type="text/css">
+div,body{
+	margin: 0px;
+	padding: 0px;
+}
+
+div#magic{
+	position: absolute;
+	top: 10%;
+	left: 50%;
+}
+
+.triangle{
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: 5px solid black;
+	border-radius: 300px;
+	transform-origin:50% 50%;
+	animation:revolve1 4s linear 1s infinite normal;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation:revolve1 10s linear 1s infinite normal;
+}
+
+.triangle:before{
+	width: 0px;
+	height: 0px;
+	content:"";
+	position: absolute;
+	top: -158px;
+	left: -138px;
+	border: 260px solid transparent;
+	border-bottom: 450px solid black;
+	transform: rotate(-60deg);
+	-webkit-transform: rotate(-60deg);
+}
+
+.triangle:after{
+	width: 0px;
+	height: 0px;
+	content: "";
+	position: absolute;
+	top: -260px;
+	left: 40px;
+	border: 260px solid transparent;
+	border-bottom: 450px solid black;
+}
+
+.triangle2{
+	clear: both;
+	width: 340px;
+	height: 340px;
+	position: absolute;
+	top: 130px;
+	left: 130px;
+	border: 2px solid white;
+	border-radius: 170px;
+	transform-origin:50% 50%;
+	animation:revolve2 4s linear 1s infinite normal;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation:revolve2 10s linear 1s infinite normal;
+}
+
+@-webkit-keyframes revolve1{
+	100% {transform: rotate(-180deg);
+		-webkit-transform: rotate(-180deg);}
+}
+
+@-webkit-keyframes revolve2{
+	100% {transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);}
+}
+
+#tri2 hr{
+	width: 292px;
+}
+
+#tri2 #hr1{
+	position: absolute;
+	transform: rotate(30deg);
+	-webkit-transform: rotate(30deg);
+	top: 86px;
+	left: 66px;
+}
+
+#tri2 #hr2{
+	position: absolute;
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	top: 161px;
+	left: -63px;
+}
+
+#tri2 #hr3{
+	position: absolute;
+	transform: rotate(-30deg);
+	-webkit-transform: rotate(-30deg);
+	top: 236px;
+	left: 65px;
+}
+
+#tri3 hr{
+	width: 292px;
+}
+
+#tri3 #hr1{
+	position: absolute;
+	transform: rotate(30deg);
+	-webkit-transform: rotate(30deg);
+	top: 235px;
+	left: -19px;
+}
+
+#tri3 #hr2{
+	position: absolute;
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	top: 161px;
+	left: 110px;
+}
+
+#tri3 #hr3{
+	position: absolute;
+	transform: rotate(-30deg);
+	-webkit-transform: rotate(-30deg);
+	top: 87px;
+	left: -18px;
+}
+
+hr{
+	width: 100px;
+}
+
+body{
+	height: 1000px;
+	color: rgba(190, 199, 235,1);
+	background: url(bgimg.jpg) repeat;
+}
+
+header{
+	font-size: 30px;
+	text-align: center;
+	background: rgba(190, 191, 233,0.5);
+}
+
+.a1{
+	position: relative;
+	left: -250px;
+	width: 350px;
+	height: 50px;
+	padding-right: 10px;
+	font-size: 40px;
+	color: rgba(190, 199, 235,1);
+	text-decoration: none;
+	text-align: right;
+	display: block;
+	border: 2px solid rgba(190, 191, 233,0.5);
+	background: rgba(190, 191, 233,0.5);
+	border-radius: 0px 20px 20px 0px;
+	transition: width 2s;
+	-webkit-transition: width 2s;
+}
+
+.a1:hover{
+	width: 590px;
+	background: rgba(190, 191, 233,0.8);
+}
+
+.p1{
+	margin: 5px;
+	padding: 10px;
+	padding-left: 15px;
+	font-size: 18px;
+	width: 40%;
+	color: rgba(190, 191, 233,1);
+	text-indent: 2em;
+	border: 2px solid rgba(190, 191, 233,0.5);
+	background: rgba(190, 191, 233,0.3);
+	border-radius: 40px;
+}
+
+audio{
+	position: absolute;
+	top: 96%;
+	right: 0px;
+}
+</style>
+</head>
+
+<body>
+	<section>
+		<header>
+			Kanadorina魔法阵
+		</header>
+		<article>
+			<br>
+			<a class="a1" href="#">不知谁编的->起源</a>
+			<p class="p1">魔法阵是用元素图腾符号表示最初的魔法绘图是在ENABELL（黑历1383年~1494年）的一次高级召唤仪式上出现，并代替了实物图腾。在他所作的泥土中的生命〈NUEABSEKAN〉中记载但是关于魔法绘图最早的记载是在精灵时代的大元素之书。因为《GNEADAUAN》上有记载，所以协会断定最早使用魔法阵的是精灵一族。魔法阵修正了元素召唤魔法和非物质召唤魔法召唤名称不确定的问题，让元素的聚集速度更迅速并且在特定召唤上更准。</p>
+			<a class="a1" href="#">又是谁鬼扯->原理</a>
+			<p class="p1">魔法师将魔法阵用某些魔法力量的良导体绘制成魔法阵。并在绘制时注入少量的魔法力量，令其在魔法阵中以特定轨迹运行，并在运行中与外界的游离魔法力量互相呼应，吸引外界游离的魔法力量，从而在一定程度上增强施术者的魔法力量。魔法阵一般都需要与日月星辰相呼应，以达到最大效果；且尽量与规则图形相接近，以减少魔法力量在其中运行时的损耗。故魔法师通常也是数学家、天文学家和几何学家。</p>
+		</article>
+		<div id="magic">
+			<div class="triangle"></div>
+			<div class="triangle2">
+				<span  id="tri2">
+					<hr id="hr1" color="white">
+					<hr id="hr2" color="white">
+					<hr id="hr3" color="white">
+				</span>
+				<span  id="tri3">
+					<hr id="hr1" color="white">
+					<hr id="hr2" color="white">
+					<hr id="hr3" color="white">
+				</span>
+			</div>
+		</div>
+		<footer>
+			<a class="a1">我来说几句->P.S.</a>
+			<p class="p1">用border-radius做的圆和三角形，然后用两个三角形+transform:rotate重叠做成六芒星，最后+上CSS3的animation搞的一个动态旋转，JS刚学，还用的不熟，所以就没用。</p>
+			<audio controls autoplay loop>
+				<source src="2huo.mp3" type="audio/mp3">
+				Your browser is too old.Strong recommended you installing Chrome browser.
+			</audio>
+		</footer>
+		
+	</section>
+</body>

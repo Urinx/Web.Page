@@ -1,0 +1,137 @@
+<meta charset="utf-8">
+<style type="text/css">
+
+div{
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	top: 20px;
+	left: 200px;
+}
+
+.triangle{
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: 2px solid black;
+	border-radius: 300px;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation:revolve1 4s linear 1s infinite normal;
+}
+
+.triangle:before{
+	width: 0px;
+	height: 0px;
+	content:"";
+	position: absolute;
+	top: -158px;
+	left: -138px;
+	border: 260px solid transparent;
+	border-bottom: 450px solid black;
+	-webkit-transform: rotate(-60deg);
+}
+
+.triangle:after{
+	width: 0px;
+	height: 0px;
+	content: "";
+	position: absolute;
+	top: -260px;
+	left: 40px;
+	border: 260px solid transparent;
+	border-bottom: 450px solid black;
+}
+
+.triangle2{
+	clear: both;
+	width: 340px;
+	height: 340px;
+	position: absolute;
+	top: 130px;
+	left: 130px;
+	border: 2px solid white;
+	border-radius: 170px;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation:revolve2 4s linear 1s infinite normal;
+}
+
+@-webkit-keyframes revolve1{
+	100% {-webkit-transform: rotate(-60deg);}
+}
+
+@-webkit-keyframes revolve2{
+	100% {-webkit-transform: rotate(60deg);}
+}
+
+#tri2 hr{
+	width: 292px;
+}
+
+#tri2 #hr1{
+	position: absolute;
+	-webkit-transform: rotate(30deg);
+	top: 86px;
+	left: 66px;
+}
+
+#tri2 #hr2{
+	position: absolute;
+	-webkit-transform: rotate(90deg);
+	top: 161px;
+	left: -63px;
+}
+
+#tri2 #hr3{
+	position: absolute;
+	-webkit-transform: rotate(-30deg);
+	top: 236px;
+	left: 65px;
+}
+
+#tri3 hr{
+	width: 292px;
+}
+
+#tri3 #hr1{
+	position: absolute;
+	-webkit-transform: rotate(30deg);
+	top: 235px;
+	left: -19px;
+}
+
+#tri3 #hr2{
+	position: absolute;
+	-webkit-transform: rotate(90deg);
+	top: 161px;
+	left: 110px;
+}
+
+#tri3 #hr3{
+	position: absolute;
+	-webkit-transform: rotate(-30deg);
+	top: 87px;
+	left: -18px;
+}
+
+hr{
+	width: 100px;
+}
+
+</style>
+<div>
+	<div class="triangle"></div>
+	<div class="triangle2">
+		<span  id="tri2">
+			<hr id="hr1" color="white">
+			<hr id="hr2" color="white">
+			<hr id="hr3" color="white">
+		</span>
+		<span  id="tri3">
+			<hr id="hr1" color="white">
+			<hr id="hr2" color="white">
+			<hr id="hr3" color="white">
+		</span>
+	</div>
+</div>

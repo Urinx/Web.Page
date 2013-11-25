@@ -1,0 +1,101 @@
+﻿<meta charset="utf-8">
+<style type="text/css">
+body{ 
+	background:url(res/bgimg.png);
+	background-size: 100% 100%;
+}
+header{
+	position: relative;
+	top: 60px;
+	color: rgba(1,1,1,0.5);
+	font-size: 60px;
+	text-align: center;
+	color: rgba(201,222,237,0.5);
+	text-shadow: 0 0 5px yellow,0 0 10px yellow,0 0 15px yellow,0 0 40px #ff00de,0 0 70px yellow;
+}
+article{
+	position: relative;
+	top: 140px;
+	color: rgba(1,1,1,0.5);
+	font-size:30px;
+	text-align: center;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
+}
+audio{
+	
+}
+
+div{
+	width: 250px;
+	height: 300px;
+	border: 2px solid rgba(224,225,226,0.5);
+	color: rgba(82,82,82,0.5);
+	text-align: center;
+	line-height: 100px;
+	font-size: 80px;
+	background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+}
+div:hover{
+	width: 280px;
+	height: 330px;
+}
+section{
+	position: relative;
+	top: 200px;
+	left: 200px;
+	width: 1010px;
+	height: 320px;
+	overflow: hidden;
+}
+ul{
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	list-style: none;
+}
+li{
+	float: left;
+	margin-left: 10px;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var oul=document.getElementById('gund');
+	var oli=oul.getElementsByTagName('li');
+	var speed=-5;
+	var timer=null;
+	oul.innerHTML+=oul.innerHTML;
+	oul.style.width=(oli.length+1)*oli[0].offsetWidth;
+
+	timer=setInterval(gundon,30);
+
+	function gundon()
+	{
+		oul.style.left=oul.offsetLeft+speed;
+		if (oul.offsetLeft<=-3000) {
+			oul.style.left=1000;
+		};
+	}
+
+}
+</script>
+
+<header>量子反常霍尔效应研讨会</header>
+<article>主讲人：张首晟 薛其坤 方忠 王亚愚 何珂</article>
+
+<section>
+<ul id="gund">
+	<li><div style="background:url(res/1.jpg) no-repeat;-webkit-background-size: 100% 100%;"></div></li>
+	<li><div style="background:url(res/2.jpg) no-repeat;-webkit-background-size: 100% 100%;"></div></li>
+	<li><div style="background:url(res/3.jpg) no-repeat;-webkit-background-size: 100% 100%;"></div></li>
+	<li><div style="background:url(res/4.jpg) no-repeat;-webkit-background-size: 100% 100%;"></div></li>
+	<li><div style="background:url(res/5.jpg) no-repeat;-webkit-background-size: 100% 100%;"></div></li>
+</ul>
+</section>
+
+<audio controls="controls" autoplay="autoplay" loop="loop" hidden>
+		<source src="res/bgm.mp3" type="audio/mp3">
+</audio>

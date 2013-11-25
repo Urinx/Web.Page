@@ -1,0 +1,194 @@
+<!--
+	记得去年高考完后无意中看了茗记，心里一阵感动。今年又快要到6月22号了，也许，经历过高考，就意味着告别了青春。
+	QQ:1336006643
+	Date:2013.5.16
+	Author:Uri
+-->
+<meta charset="utf-8">
+<style type="text/css">
+div,body{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url(res/1.jpg) no-repeat;
+	background-size: 100% 100%;
+	transition:background 2s;
+	-moz-transition:background 2s;
+	-webkit-transition:background 2s;
+}
+#lyric{
+	position: relative;
+	top: 70%;
+	left: 35%;
+	width: 350px;
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+	font-weight: bolder;
+	font-size: 30px;
+	color: black;
+	color: #fff;
+	text-shadow:0 0 5px #fff,
+				0 0 10px #fff,
+				0 0 15px #fff,
+				0 0 40px #ff00de,
+				0 0 70px #ff00de;
+}
+
+#weisui{
+	display: none;
+}
+.bubble{
+	width: 80px;
+	height: 80px;
+	border: 2px solid rgba(214,133,168,0.5);
+	border-radius: 40px;
+	position: absolute;
+}
+
+.heart { 
+	position: relative;
+}
+.heart:before, .heart:after {
+	background: rgba(191,64,66,0.5);
+	position: absolute;
+    content: "";
+	left: 70px; top: 0;
+	width: 70px;
+	height: 115px;
+	border: 2px solid rgba(191,64,66,0.1);
+	border-left: transparent;
+	border-right: transparent;
+	-moz-border-radius: 50px 50px 0 0;
+	border-radius: 50px 50px 0 0;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: 0 100%;
+	-moz-transform-origin: 0 100%;
+	-ms-transform-origin: 0 100%;
+	-o-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+}
+.heart:after { 
+	left: 0; 
+	-webkit-transform: rotate(45deg); 
+	-moz-transform: rotate(45deg); 
+	-ms-transform: rotate(45deg); 
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	-o-transform-origin: 100% 100%;
+	transform-origin :100% 100%;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var lrc=[
+	'又是一年高考时','又是一次离别季','最后才发现','有一种爱叫做东方不败','相恋不如不见','早恋是属于青春的','所以才会纯真','因为只有我们才会单纯','只有我们才会认真','只有人生不能没有青春',
+	'初织恋','听着这首歌','思念成了我的功课','不情愿 一颗心','被你掌握',
+	'墙边的藤萝','遮不住小鹿的灵活','缝隙里 我看到','你眼中的炙热',
+	'我时时刻刻无法去摆脱','已经被你俘虏了太多',
+	'你时时刻刻从心里经过','我已经完全被你掌握','思念是我的功课',
+	'复习有你的角落','忍不住又哼唱','念念不忘那首歌',
+	'记住这首歌','秋天的唱词春天和','一开始 就准备','慢慢凋落',
+	'心底的角落','反反复复不停吟哦','没有错 没有错','只是一种错过',
+	'你是否是否还能想起我','想起当初我们的承诺',
+	'我无时无刻不在惦记着','披上嫁衣还刚刚哭过','错过的太多太多',
+	'隔断的太多太多','何时能再唱起','当初当初 那首歌',
+	'你是否是否还能想起我','想起当初我们的承诺',
+	'我无时无刻不在惦记着','披上嫁衣还刚刚哭过','错过的太多太多',
+	'隔断的太多太多','何时能再唱起','当初当初 那首歌','Fin',
+	'经历过高考的人','终于会发现','自己真的在变老','直到变成回忆中的那些年','没有女孩','仅仅只有致青春'];
+
+	var lrcTime=[
+	'0','2','4','6','8','11','13','15','18','21','24','25.471729','29.750555','33.151729','37.599253',
+	'41.70238','45.246777','49.135412','52.654491',
+	'56.543126','60.382126','64.543205','68.351729',
+	'72.471015','76.5833','80.534047','83.012202','103.622841',
+	'107.598904','111.158618','115.847793',
+	'119.543571','123.454681','127.110824',
+	'130.66338','134.776507','138.43065','142.566253',
+	'146.486523','150.534856','154.399174',
+	'158.703475','162.557634','178.712015',
+	'182.575491','186.597348','190.575412',
+	'194.391094','198.534857','202.67046','204.545323',
+	'209.006237','212','216','219','223','227','230','236'
+	];
+
+	var oLrc=document.getElementById('lyric');
+
+	var a=0;
+	var b=2;
+
+	var myAudio = document.getElementById('au');
+	myAudio.addEventListener("timeupdate", function()
+		{
+			/*
+			var ct = parseInt(myAudio.currentTime);  
+			// 当前的播放时间(舍弃小数点以下数据)  
+			var total = parseInt(myAudio.duration);  
+			// 整体播放时间(舍弃小数点以下数据)  
+			document.getElementById("div2").innerHTML =  
+			"播放时间：" + ct + "秒 / total : " + total + "秒";
+			*/
+
+			for (var i = 0; i < lrcTime.length; i++) {
+				if (myAudio.currentTime>=lrcTime[i])
+				{
+					if (myAudio.currentTime<=lrcTime[i+1]) {
+						oLrc.innerHTML=lrc[i];
+					};
+				}
+			};
+		}
+	,true);
+
+	//change bg
+	setInterval(function () {
+		document.getElementsByTagName('body')[0].style.backgroundImage='url(res/'+b+'.jpg)';
+		b++;
+		if(b==28){b=1;}
+	},8500);
+
+
+	//follow mouse
+	var oBa=document.getElementById('weisui');
+	for (var i = 0; i < 20; i++) {
+		oBa.innerHTML+='<div></div>';
+	};
+	var oDi=oBa.getElementsByTagName('div');
+	for (var i = 0; i < oDi.length; i++) {
+		oDi[i].className='heart';
+	};
+
+
+	document.onmousemove=function()
+	{
+		oBa.style.display="block";
+		for (var i = oDi.length-1; i > 0; i--) {
+			oDi[i].style.left=oDi[i-1].style.left;
+			oDi[i].style.top=oDi[i-1].style.top;
+		};
+
+		oDi[0].style.left=event.clientX-40+'px';
+		oDi[0].style.top=event.clientY-40+'px';
+
+	}
+}
+</script>
+
+<div id="lyric"></div>
+
+<audio id="au" controls autoplay loop hidden>
+	<source src="ChuZhiLove.mp3" type="audio/mp3">
+</audio>
+
+<div id="weisui"></div>
