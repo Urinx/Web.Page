@@ -1,0 +1,96 @@
+﻿<!--
+	危机分课上老湿用夹逼法求DII型曲面积分，我突然发现- -> 考试逼近<=我<=作业增多。
+	不过看了JJ的巨人，居然我又被点燃了。我宣布，一个月不进B站，一个月不看Ac娘。
+	QQ:1336006643
+	Date:2013.4.30
+	Author:Uri
+-->
+<meta charset="utf-8">
+<style type="text/css">
+#baidu{
+	position: relative;
+	top: 72%;
+	left: 42%;
+}
+#searchbox{
+	line-height: 20px;
+	border-radius: 100px;
+	outline: none;
+	background: none;
+}
+#btn{
+	background-color:transparent;
+ 	border:0px; 
+ 	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	background: url(search2.png) no-repeat;
+	-webkit-background-size: 100% 100%;
+	-webkit-transform: translateX(80px);
+	-webkit-animation: start 1.5s ease-in-out 1s 1 alternate;
+	-webkit-transition: 1s;
+}
+@-webkit-keyframes start{
+50% {-webkit-transform: rotate(200deg);}
+}
+body{
+	background: url(bgimg.jpg) no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden；
+}
+audio{
+	position: absolute;
+	top: 95%;
+	left: 2%;
+}
+header{
+	font-size: 80px;
+	font-weight: bolder;
+	color: rgba(201,222,237,0.5);
+	position: absolute;
+	top: 25%;
+	left: 23%;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function ()
+{
+	var searbtn=document.getElementById('btn');
+	var n=0;
+	searbtn.onmouseover=function()
+	{
+		var searbtn=document.getElementById('btn');
+		if (n==0) {
+			searbtn.style.webkitTransform='rotate(180deg)';
+		};
+		if (n==1) {
+			searbtn.style.webkitTransform='translateX(80px)';
+		};
+		n=1-n;
+	}
+}
+
+function checkstr()
+{      
+	var txt=document.getElementById('searchbox'); 
+	var str=document.getElementById('searchbox').value;
+	txt.size=str.length;
+}
+</script>
+
+<body>
+	<header>
+		Searching iS Seaing
+	</header>
+	<div id="baidu">
+		<form action="http://www.baidu.com/s?" target="_blank">
+			<button type="submit" id="btn" value="1">&nbsp;</button>
+			<input type="text" name="wd" id="searchbox" size="1" onkeyup="checkstr()">
+		</form>
+	</div>
+	<audio controls autoplay loop>
+		<source src="HapinisCarige.mp3" type="audio/mp3">
+	</audio>
+</body>

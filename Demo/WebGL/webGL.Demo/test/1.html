@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+  
+  QQ:1336006643
+  Date:2013.8.24
+  Author:Uri
+-->
+<meta charset="UTF-8">
+<title>Three.js</title>
+<script src="http://threejs.org/build/three.min.js"></script>
+<style type="text/css">
+div#canvas-frame{
+  border: none;
+  cursor: pointer;
+  width: 1300px;
+  height: 680px;
+  background-color: #ffffff;
+}
+</style>
+<script>
+//设置渲染器
+//三维空间里的物体映射到二维平面的过程被称为三维渲染。 一般来说我们都把进行渲染操作的软件叫做渲染器
+var renderer;//声明全局变量(对象)
+var width, height;
+function initThree() {
+  width = document.getElementById('canvas-frame').clientWidth;//获取画布[canvas-frame]的高宽
+  height = document.getElementById('canvas-frame').clientHeight; 
+  renderer = new THREE.WebGLRenderer({antialias: true});//生成渲染器对象(属性:抗锯齿效果为设置有效)
+  renderer.setSize(width, height );//指定渲染器的高宽(和画布框大小一致)
+  document.getElementById('canvas-frame').appendChild(renderer.domElement);//追加[canvas]元素到[canvas-frame]元素中。
+  renderer.setClearColorHex(0xFFFFFF, 1.0);//设置渲染器的清除色(clearColor)
+  renderer.shadowMapEnabled = true;//物体阴影设置1
+  
+}
+
+//设置相机
+//OpenGL(WebGL)中、三维空间中的物体投影到二维空间的方式中，存在透视投影和正投影两种相机。 透视投影就是、从视点开始越近的物体越大、远处的物体绘制的较小的一种方式、和日常生活中我们看物体的方式是一致的。 正投影就是不管物体和视点距离，都按照统一的大小进行绘制
+var camera;//声明全局的变量(对象)
+function initCamera() {
+  var VIEW_ANGLE = 45, ASPECT = width/height, NEAR = 1, FAR = 10000;
+  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );//设置透视投影的相机
+  //设置相机的位置坐标:camera.position.set(100,20,50);
+  camera.position.x = 400;
+  camera.position.y = 20;
+  camera.position.z = 50;
+  //设置相机的上为[z]轴方向
+  camera.up.x = 0;
+  camera.up.y = 0;
+  camera.up.z = 1;
+  camera.lookAt( {x:0, y:0, z:0 } );//设置视野的中心坐标
+}
+//var camera = THREE.OrthographicCamera = function ( left, right, top, bottom, near, far ) //正投影
+//var camera = THREE.CombinedCamera = function ( width, height, fov, near, far, orthonear, orthofar ) //複合投影
+
+//声明场景
+//场景就是一个三维空间。 用 [Scene] 类声明一个叫 [scene] 的对象。
+var scene;
+function initScene() {   
+  scene = new THREE.Scene();
+}
+
+//设置光源并追加到场景
+//OpenGL（WebGL）的三维空间中，存在点光源和聚光灯两种类型。 而且，作为点光源的一种特例还存在平行光源(无线远光源)。另外，作为光源的参数还可以进行[环境光]等设置。作为对应，Three.js中可以设置[点光源(Point Light)][聚光灯(Spot Light)][平行光源(Direction Light)]，和[环境光(Ambient Light)]。 和OpenGL一样、在一个场景中可以设置多个光源。 基本上，都是环境光和其他几种光源进行组合。 如果不设置环境光，那么光线照射不到的面会变得过于黑暗。
+var light, light2;//声明全局变量(对象)
+function initLight() { 
+  light = new THREE.DirectionalLight(0xFFFFFF, 1.0, 0);//设置平行光源
+  /*用[DirectionalLight]类声明一个叫[light]的对象来代表平行光源，之后在构造函数中进行属性设置
+    var light = new THREE.DirectionalLight( hex, intensity)
+    [hex]是用来以16进制指定光源的颜色。默认是白色[0xFFFFFF]。[intensity]是光源的强度。默认为1。 另外，还需要通过对象的属性来设置平行光源的方向。*/
+  light.position.set( 50, 50, 200 );//设置光源向量
+  //光源方向向量是从通过[set()]方法指定的点(x, y, z)开始到点(0, 0, 0) 的方向，和向量的大小没有关系。 和相机的位置坐标设置一样，直接修改[position.x, position.y, position.z]属性也可以。 最后通过[add]方法追加光源到场景中去。
+  light.castShadow = true;//物体阴影设置2
+  scene.add(light);//追加光源到场景
+ 
+  light2 = new THREE.AmbientLight(0x555555);//添加环境光
+  //同时要让环境光照射到物体，只是设置光源是不够的，还需要向物体的材质中设置[ambient]属性。
+  scene.add(light2);   
+}
+/*
+var light = new THREE.AmbientLight( hex );                               //(1)環境光源
+var light = new THREE.PointLight( hex, intensity, distance );            //(2)点光源
+var light = new THREE.SpotLight( hex, intensity, distance, castShadow ); //(3)スポットライト光源
+*/
+
+//声明立方体并追加到场景
+var cube = Array();//创建多个对象
+function initObject(){
+  for(var i=0; i<3; i++){
+    cube[i] = new THREE.Mesh(
+         new THREE.CubeGeometry(50,50,50),                //形状の設定
+         new THREE.MeshLambertMaterial({color: 0xff0000,ambient:0xFF0000/*这个属性，通过16进制指定了对于环境光反射的强度*/}) //材質の設定
+    );
+    scene.add(cube[i]);
+    cube[i].castShadow = true;//物体阴影设置3
+    cube[i].position.set(0,-100+100*i,0);
+    
+  }
+  plane = new THREE.Mesh(
+      new THREE.PlaneGeometry(500, 500),               
+      new THREE.MeshLambertMaterial({color: 0x999999, ambient:0x999999})
+  );
+  plane.receiveShadow = true;//物体阴影设置4
+  scene.add(plane);
+  plane.position.set(0,0,-100);
+}
+/*
+  THREE.CubeGeometry ( width, height, depth, segmentsWidth, segmentsHeight, segmentsDepth, materials, sides );//立方体
+  THREE.CylinderGeometry ( radiusTop, radiusBottom, height, segmentsRadius, segmentsHeight, openEnded );//円錐型
+  THREE.OctahedronGeometry ( radius, detail ) //八面体
+  THREE.PlaneGeometry ( width, height, segmentsWidth, segmentsHeight ); //平面型
+  THREE.SphereGeometry ( radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength );//球型
+  THREE.TorusGeometry ( radius, tube, segmentsR, segmentsT, arc )//トーラス型
+*/
+
+//动画效果
+var t=0;
+function loop() {
+  t++;
+  cube[0].rotation.set( t/100, 0, 0 );
+  cube[1].rotation.set( 0, t/100, 0 );
+  cube[2].rotation.set( 0, 0, t/100 );
+  camera.position.set( 400*Math.cos(t/100), 400*Math.sin(t/200), 50*Math.cos(t/50));
+  camera.lookAt( {x:0, y:0, z:0 } );//更改相机参数的时候、一定要在[camera.lookAt]函数之前进行。 因为[camera.lookAt]函数、不仅仅是设置视点的中心、还能够让设置的相机参数发生实际的效果。
+  renderer.clear();
+  renderer.render(scene, camera);
+  window.requestAnimationFrame(loop);//[window.requestAnimationFrame]函数能够在一定时间间隔后调用指定函数。这个函数只有在所在浏览器页正在被浏览的时候才会执行，因此更加节省资源。
+}
+
+//执行渲染
+function threeStart() {
+  initThree();
+  initCamera();
+  initScene();   
+  initLight();
+  initObject();
+  loop();
+}
+</script>
+</head>
+ 
+<body onload="threeStart();">
+<div id="canvas-frame"></div>
+<audio autoplay controls loop hidden>
+  <source type="audio/mp3" src="res/.mp3">
+</audio>
+</body>
+</html>

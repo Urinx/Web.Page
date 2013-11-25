@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>flotr2 の動作確認</title>
+<script src="http://www.natural-science.or.jp/javascript/raf.js"></script>
+<script src="http://www.natural-science.or.jp/javascript/flotr2.min.js"></script>
+<style>
+body {width:650px}
+div#graph {
+	float:left;
+	margin: 10px 0px 0px 0px;
+	width : 400px;
+	height: 300px;
+}
+div#graph canvas {
+	overflow : visible;
+}
+</style>
+<script>
+	var t = 0;     //時刻
+	var dt = 0.05; //時間刻み
+	var d1 = []; var d2 = [];
+	function loop() {
+		t += dt;
+		omega = Math.PI/2;
+		//図を書く//////////////////////////////////////
+		d1.push([t, Math.sin(omega*t)]);
+		d2.push([t, Math.cos(omega*t)]);
+		if(d1.length > 100) {
+			d1.shift();
+			d2.shift();
+		}
+		basic_legend(document.getElementById("graph"));	//図の描画
+		window.requestAnimationFrame(loop);
+	}
+	function basic_legend(container) {
+		var data, graph, i;
+		data = [
+			{ data : d1, label :'sin' },
+			{ data : d2, label :'cos' }
+		];
+		// This function prepend each label with 'y = '
+		function labelFn (label) {
+			return label;
+		}
+		// Draw graph
+		graph = Flotr.draw(container, data, {
+			legend : {
+				position : 'nw', // Position the legend 'south-east'.
+				labelFormatter : labelFn, // Format the labels.
+				backgroundColor : '#D2E8FF' // A light blue background color.
+			},
+			yaxis : {
+              max : 1.1,
+              min : -1.1
+            },			
+			HtmlText : false
+			});
+	}	
+</script>
+</head>
+
+<body onload="loop();">
+<div id="graph"></div>
+</body>
+</html>

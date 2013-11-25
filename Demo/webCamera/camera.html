@@ -1,0 +1,155 @@
+<!--
+	这次利用的是Html5的一个API做的一个web摄像头，因为小姨一直要我自拍一张给她>_<||，所以。。不过倒拍了一张，效果嘛，嘻嘻。。。
+	时间比较短，做的好粗糙。。
+	QQ:1336006643
+	Date:2013.7.24
+	Author:Uri
+-->
+<meta charset="utf-8">
+<title>Web Camera4U</title>
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body,div,video,canvas,h1{
+	margin: 0;
+	padding: 0;
+}
+video,canvas{
+	margin: 15px;
+}
+body{
+	background: url('res/bg2.jpg') no-repeat;
+	background-size: 100% 100%;
+	font-family: Satisfy,serif;
+	text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+}
+h1{
+	text-align: center;
+	color: #e768ad;
+}
+video,canvas{
+	background: gray;
+	display: -none;
+}
+#full{
+	position: relative;
+	top: 20px;
+	left: 400px;
+	width: 80px;
+	height: 80px;
+	border: 0px solid gray;
+	background: url('res/full.png') no-repeat;
+	background-size: 100% 100%;
+	float: left;
+	cursor: pointer;
+}
+#snap{
+	position: relative;
+	left: 46%;
+	width: 100px;
+	height: 100px;
+	border: 0px solid gray;
+	background: url('res/ios.camera.png') no-repeat;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+#help{
+	position: relative;
+	top: -100px;
+	left: 55%;
+	width: 400px;
+	height: 100px;
+	border: 0px solid gray;
+	display: none;
+	color: white;
+	background: url('res/bubble.png') no-repeat;
+	background-size: 100% 100%;
+}
+#help div{
+	position: relative;
+	top: 35px;
+	left: 90px;
+	width: 250px;
+	height: 50px;
+	font-size: 14px;
+	color: black;
+	line-height: 25px;
+}
+</style>
+<script type="text/javascript">
+function launchFullScreen(element) {
+  if(element.requestFullScreen) {
+    element.requestFullScreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullScreen) {
+    element.webkitRequestFullScreen();
+  }
+}
+
+function cancelFullscreen() {
+  if(document.cancelFullScreen) {
+    document.cancelFullScreen();
+  } else if(document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if(document.webkitCancelFullScreen) {
+    document.webkitCancelFullScreen();
+  }
+}
+
+//添加事件监听器
+window.addEventListener("DOMContentLoaded",function(){
+	//获取元素，创建配置
+	var canvas=document.getElementById('canvas'),
+	context=canvas.getContext("2d"),
+	video=document.getElementById('video'),
+	videoObj={'video':true},
+	errBack=function(error){
+		console.log('Video capture error: ',error.code);
+	};
+
+	//添加视频监听器
+	if(navigator.getUserMedia){//标准的API
+		navigator.getUserMedia(VideoObj,function(stream){
+			video.src=stream;
+			video.play();
+		},errBack);
+	}
+	else if(navigator.webkitGetUserMedia){
+		navigator.webkitGetUserMedia(videoObj, function(stream){
+      		video.src = window.webkitURL.createObjectURL(stream);
+      		video.play();
+    	}, errBack);
+	};
+
+	//Trigger photo take
+	document.getElementById("snap").addEventListener("click", function() {
+		context.drawImage(video, 0, 0, 640, 480);
+	});
+
+	//show helpinfo
+	document.getElementById("snap").addEventListener("mouseover", function() {
+		document.getElementById('help').style.display='block';
+	});
+
+	//hide helpinfo
+	document.getElementById("snap").addEventListener("mouseout", function() {
+		document.getElementById('help').style.display='';
+	});
+
+	//FullScreen
+	document.getElementById("full").addEventListener("click", function() {
+		launchFullScreen(document.documentElement);
+	});
+},false);
+</script>
+
+<h1>Web Camera4U</h1>
+<video id="video" width="640" height="480" autoplay></video>
+<canvas id="canvas" width="640" height="480"></canvas>
+<div id="full"></div>
+<div id="snap"></div>
+<footer id="help"><div>拍好后，右键点击照片，选择图片另存为，即可保存图片到本地，嘻嘻o(^▽^)o</div></footer>
+<audio loop controls autoplay hidden>
+	<source src="res/simple.mp3" type="audio/mp3">
+	<source src="res/simple.ogg" type="audio/ogg">
+</audio>
