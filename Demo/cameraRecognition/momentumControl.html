@@ -1,0 +1,43 @@
+<!--
+	为什么你能够 就这样不回头
+	忽然梦醒时候 还不止地泪流
+	很清冷的四周 很无助的感受
+	留我在夜尽头 没有你的以后
+	QQ:1336006643
+	Date:2013.9.11
+	Author:Uri
+-->
+<style type="text/css">
+body,div{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url(5.jpg);
+	background-size: 100% 100%;
+}
+#dot{
+	position: absolute;
+	left: 40%;
+	top: 46%;
+	width: 200px;
+	height: 200px;
+	border: 1px solid rgba(255,255,255,0.2);
+	border-radius: 100px;
+	background: rgba(0,0,0,0.5);
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript" src="cameraRec.js"></script>
+<script type="text/javascript">
+//添加事件监听器
+window.addEventListener("DOMContentLoaded",startCameraRec('dot'),false);
+</script>
+
+<body>
+	<div id="dot"></div>
+	<audio autoplay loop>
+		<source src="dream.mp3">
+	</audio>
+</body>

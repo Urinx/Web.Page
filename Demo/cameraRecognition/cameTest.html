@@ -1,0 +1,71 @@
+<!--
+	this is for test.
+	QQ:1336006643
+	Date:2013.9.7
+	Author:Uri
+-->
+<meta charset="utf-8">
+<title>Camera</title>
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css"></style>
+
+<script type="text/javascript">
+
+//添加事件监听器
+window.addEventListener("DOMContentLoaded",function(){
+
+	//获取元素，创建配置
+	var canvas=document.getElementById('canvas'),
+	context=canvas.getContext("2d"),
+	video=document.getElementById('video'),
+	videoObj={'video':true},
+	errBack=function(error){
+		console.log('Video capture error: ',error.code);
+	};
+
+	//添加视频监听器
+	if(navigator.getUserMedia){//标准的API
+		navigator.getUserMedia(VideoObj,function(stream){
+			video.src=stream;
+			video.play();
+		},errBack);
+	}
+	else if(navigator.webkitGetUserMedia){
+		navigator.webkitGetUserMedia(videoObj, function(stream){
+      		video.src = window.webkitURL.createObjectURL(stream);
+      		video.play();
+    	}, errBack);
+	};
+	
+	var temp2=[],pre=[],temp=[];
+	var w=640,h=480;
+	var imgdas;
+	var newimgdas;
+
+	loop();
+	function loop(){
+		context.drawImage(video, 0, 0, 640, 480);
+		imgdas=context.getImageData(0,0,w,h);
+		newimgdas=context.createImageData(w,h);
+
+		pre=temp2;
+		temp2=set1(imgdas.data);
+		temp=greenize(temp2,pre,50);
+
+		putColor(newimgdas,temp);
+		context.clearRect(0,0,w,h);
+		context.putImageData(newimgdas,0,0);
+
+		window.requestAnimationFrame(loop);
+	}
+
+},false);
+</script>
+<script type="text/javascript" src="cameTest.js"></script>
+
+<video id="video" width="640" height="480" autoplay></video>
+<div id="div1"></div>
+<canvas id="canvas" width="640" height="480"></canvas>
+<div id="snap"></div>
+<p id="zhi"></p>

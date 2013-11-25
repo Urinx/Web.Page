@@ -1,0 +1,164 @@
+<!--
+	好久没做了，发现才一个多月嘛就什么都忘了/_\||...
+	这次的作品没达到预期的效果，毕竟时间有限，就没用多少时间^_^!!
+	至于里面那个妹子，(*^__^*) 嘻嘻……不多说了，太有爱了^o^
+	重点是本来只是想让字重力下落的，只怪自己太烂，出了bug，居然达到了文字伪随机浮动的效果，好吧，于是就这样了
+	QQ:1336006643
+	Date:2013.6.16
+	Author:Uri
+-->
+<meta charset="utf-8">
+<style type="text/css">
+body,div,p{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-image: url('res/LangelinieAlle.jpg');
+	background:url('res/Arboreal_ballet_by_Bob_Farrell.jpg') no-repeat;
+	background-size: 100% 100%;
+	height: 750px;
+}
+#header{
+	width: 186px;
+	height: 300px;
+	position: relative;
+	top: 120px;
+	left: 80px;
+	border: 4px solid rgba(61,165,184,0.5);
+	border-radius: 20px;
+	background-image: url('res/headphoto.jpg');
+	background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	animation: headphotoMove 10s ease-in-out 0s infinite alternate;
+	-moz-animation: headphotoMove 10s ease-in-out 0s infinite alternate;
+	-webkit-animation: headphotoMove 10s ease-in-out 0s infinite alternate;
+}
+@keyframes headphotoMove{
+50% {transform: translateX(700px);}
+}
+@-webkit-keyframes headphotoMove{
+50% {-webkit-transform: translateX(700px);}
+}
+@-moz-keyframes headphotoMove{
+50% {-moz-transform: translateX(700px);}
+}
+audio{
+	position: relative;
+}
+#text{
+	width: 620px;
+	height: 100px;
+	position: relative;
+	top: -80px;
+	left: 130px;
+}
+#text div{
+	width: 100px;
+	height: 100px;
+	border: 0px solid gray;
+	float: left;
+	position: relative;
+	text-align: center;
+	line-height: 100px;
+	font-size: 100px;
+	font-weight: bolder;
+	color: transparent;
+}
+#text div:nth-child(1){
+	animation: wordMove 10s ease-in-out 1.5s infinite alternate;
+	-moz-animation: wordMove 10s ease-in-out 1.5s infinite alternate;
+	-webkit-animation: wordMove 10s ease-in-out 1.5s infinite alternate;
+}
+#text div:nth-child(2){
+	animation: wordMove 9.5s ease-in-out 2s infinite alternate;
+	-moz-animation: wordMove 9.5s ease-in-out 2s infinite alternate;
+	-webkit-animation: wordMove 9.5s ease-in-out 2s infinite alternate;
+}
+#text div:nth-child(3){
+	animation: wordMove 9s ease-in-out 2.5s infinite alternate;
+	-moz-animation: wordMove 9s ease-in-out 2.5s infinite alternate;
+	-webkit-animation: wordMove 9s ease-in-out 2.5s infinite alternate;
+}
+#text div:nth-child(4){
+	animation: wordMove 8s ease-in-out 3s infinite alternate;
+	-moz-animation: wordMove 8s ease-in-out 3s infinite alternate;
+	-webkit-animation: wordMove 8s ease-in-out 3s infinite alternate;
+}
+#text div:nth-child(5){
+	animation: wordMove 8s ease-in-out 3.5s infinite alternate;
+	-moz-animation: wordMove 8s ease-in-out 3.5s infinite alternate;
+	-webkit-animation: wordMove 8s ease-in-out 3.5s infinite alternate;
+}
+#text div:nth-child(6){
+	animation: wordMove 7s ease-in-out 4s infinite alternate;
+	-moz-animation: wordMove 7s ease-in-out 4s infinite alternate;
+	-webkit-animation: wordMove 7s ease-in-out 4s infinite alternate;
+}
+@keyframes wordMove{
+10% {
+		color: white;
+		text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+		transform: rotate(180deg);
+	}
+40% {
+		transform: translateY(200px) rotate(0deg);
+	}
+100% {
+		-transform: translateY(350px)  rotate(-180deg);
+		color: transparent;
+	}
+}
+@-webkit-keyframes wordMove{
+10% {
+		color: white;
+		text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+		-webkit-transform: rotate(180deg);
+	}
+40% {
+		-webkit-transform: translateY(200px) rotate(0deg);
+	}
+100% {
+		-webkit-transform: translateY(350px)  rotate(-180deg);
+		color: transparent;
+	}
+}
+@-moz-keyframes wordMove{
+10% {
+		color: white;
+		text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+		-moz-transform: rotate(180deg);
+	}
+40% {
+		-moz-transform: translateY(200px) rotate(0deg);
+	}
+100% {
+		-moz-transform: translateY(350px)  rotate(-180deg);
+		color: transparent;
+	}
+}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+	var op=document.getElementById('header');
+	op.onclick=function()
+	{
+		alert('不要戳我!!'+'\n'+'->_->||');
+	}
+}
+</script>
+
+<div id="header"></div>
+<div id="text">
+	<div>嘻</div>
+	<div>嘻</div>
+	<div>^</div>
+	<div>_</div>
+	<div>^</div>
+	<div>!</div>
+</div>
+<audio autoplay controls loop hidden>
+	<source src="res/naturalfool.mp3" type="audio/mp3">
+	<source src="res/naturalfool.ogg" type="audio/ogg">
+</audio>

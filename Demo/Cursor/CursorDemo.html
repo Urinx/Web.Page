@@ -1,0 +1,195 @@
+﻿<!--
+	对四川雅安遭受地震的同胞表示同情和默哀，希望大家伸出援手。
+	QQ:1336006643
+	Date:2013.4.21
+	Author:Uri
+-->
+<title>HaHa DuDuLu!</title>
+<meta charset="utf-8">
+<style type="text/css">
+
+.ac-container{
+	width: 400px;
+	margin: 10px auto 30px auto;
+}
+
+.ac-container label{
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	padding: 5px 20px;
+	position: relative;
+	z-index: 20;
+	display: block;
+	height: 30px;
+	cursor: pointer;
+	color: #777;
+	text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+	line-height: 33px;
+	font-size: 19px;
+	background: -webkit-linear-gradient(top,#ffffff 1%,#eaeaea 100%);
+	box-shadow: 
+		0px 0px 0px 1px rgba(155,155,155,0.3),
+		1px 0px 0px 0px rgba(255,255,255,0.9) inset,
+		0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.ac-container label:hover{
+    background: #fff;
+}
+
+.ac-container input:checked + label,.ac-container input:checked + label:hover{
+	background: #c6e1ec;
+	color: #3d7489;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+	box-shadow: 
+		0px 0px 0px 1px rgba(155,155,155,0.3),
+		0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.ac-container label:hover:after,.ac-container input:checked + label:hover:after{
+	content: '>';
+	-webkit-transform: rotate(90deg);
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	right: 13px;
+	top: 15px;
+}
+
+.ac-container input:checked + label:hover:after{
+	content: '<';
+}
+
+.ac-container input{
+	display: none;
+}
+
+.ac-container article{
+	background: rgba(255,255,255,0.5);
+	margin-top: -1px;
+	overflow: hidden;
+	height: 0px;
+	position: relative;
+	z-index: 10;
+	-webkit-transition: height 0.3s ease-in-out,box-shadow 0.6s linear;
+}
+
+.ac-container input:checked ~ article{
+	-webkit-transition: height 0.5s ease-in-out,
+	box-shadow 0.1s linear;
+	box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.3);
+}
+
+.ac-container article p{
+	font-style: italic;
+	color: #080e17;
+	text-align: center;
+	line-height: 10px;
+	font-size: 14px;
+	padding: 0px;
+	text-shadow: 1px 1px 1px rgba(255,255,255,1);
+}
+
+.ac-container input:checked ~ article.ac-small{
+	height: 140px;
+}
+.ac-container input:checked ~ article.ac-medium{
+	height: 210px;
+}
+.ac-container input:checked ~ article.ac-large{
+	height: 230px;
+}
+
+#readme{
+	position:absolute;
+	top: 0px;
+	left: 5%;
+}
+
+#music{
+	position:absolute;
+	top: 0px;
+	right: 5%;
+}
+
+</style>
+<script type="text/javascript"></script>
+<body bgcolor="#777" background="bgimg.jpg">
+	<section class="ac-container">
+		<div>
+			<input id="ac-1" type="checkbox" name="accordion-1">
+			<label for="ac-1">Commonly Used</label>
+			<article class="ac-small">
+				<p style="cursor:auto">Auto</p>
+				<p style="cursor:crosshair">Crosshair</p>
+				<p style="cursor:default">Default</p>
+				<p style="cursor:pointer">Pointer</p>
+				<p style="cursor:move">Move</p>
+			</article>
+		</div>
+
+		<div>
+			<input id="ac-2" type="checkbox" name="accordion-2">
+			<label for="ac-2">Direction</label>
+			<article class="ac-medium">
+				<p style="cursor:e-resize">e-resize</p>
+				<p style="cursor:ne-resize">ne-resize</p>
+				<p style="cursor:nw-resize">nw-resize</p>
+				<p style="cursor:n-resize">n-resize</p>
+				<p style="cursor:se-resize">se-resize</p>
+				<p style="cursor:sw-resize">sw-resize</p>
+				<p style="cursor:s-resize">s-resize</p>
+				<p style="cursor:w-resize">w-resize</p>
+			</article>
+		</div>
+
+		<div>
+			<input id="ac-3" type="checkbox" name="accordion-3">
+			<label for="ac-3">Others</label>
+			<article class="ac-small">
+				<br>
+				<p style="cursor:text">Text</p>
+				<p style="cursor:wait">Wait</p>
+				<p style="cursor:help">Help</p>
+			</article>
+		</div>
+
+		<div>
+			<input id="ac-4" type="checkbox" name="accordion-4">
+			<label for="ac-4">P.S.</label>
+			<article class="ac-small">
+				<p>Thanks For Your Looking,</p>
+				<p>And</p>
+				<p>God Bless you.</p>
+				<br>
+				<p style="text-align:right;">Made by Uri.</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="ac-container" id="readme">
+		<div>
+			<input id="ac-0" type="checkbox" name="accordion-0" value="checked">
+			<label for="ac-0">Read Me</label>
+			<article class="ac-small">
+				<br>
+				<p>这是一个演示如何改变鼠标指针的网页</p>
+				<p>请把鼠标移动到单词上，可以看到鼠标指针发生变化</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="ac-container" id="music">
+		<div>
+			<input id="ac-5" type="checkbox" name="accordion-5" value="checked">
+			<label for="ac-5">Music</label>
+			<article class="ac-small">
+				<br>
+				<p>
+				<audio controls="controls" autoplay="autoplay" loop="loop">
+					<source src="yongganai.mp3" type="audio/mp3">
+				</audio>
+				</p>
+			</article>
+		</div>
+	</section>
+</body>

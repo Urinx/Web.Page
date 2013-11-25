@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Flood It</title>
+<style>
+span,div,body{margin: 0;padding: 0;}
+span{display:inline-block;margin:0px;width:21px;height:21px;cursor:pointer;}
+body{overflow-x:hidden;overflow-y:hidden;background-image: url(../pbg/pbg3.jpg);}
+p{
+	width: 252px;
+	height: 40px;
+	text-align: center;
+	line-height: 0px;
+	font-size: 26px;
+	font-weight: bolder;
+	color: white;
+	text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+}
+</style>
+</head>
+<body>
+<p>Flood-it2</p>
+<div style="position:absolute;left:3px;top:40px;width:252px;">
+<canvas id="canvas" width="252" height="252"></canvas>
+</div>
+<div style="position:absolute;left:-10px;top:300px;width:100px;">
+<p><input type=button value="New Game" onclick=init()><span id="hint"></span></p>
+<p>
+<span style="background:#884cb8;" onclick=drawColor(0)></span>
+<span style="background:#f84870;" onclick=drawColor(1)></span>
+<span style="background:#f87c00;" onclick=drawColor(2)></span>
+<span style="background:#f8dc00;" onclick=drawColor(3)></span>
+<span style="background:#10d000;" onclick=drawColor(4)></span>
+<span style="background:#106cf8;" onclick=drawColor(5)></span>
+</p>
+<div>
+<script> 
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+
+var color=['#884cb8','#f84870','#f87c00','#f8dc00','#10d000','#106cf8'];
+
+var board;
+
+var level=12;
+
+var currentColorIndex;
+
+var flag;
+
+var hint=document.getElementById('hint');
+
+var step;
+
+function init(){
+	board=new Array();
+	for(i=0;i<level;i++){
+		var row=new Array();
+		for(j=0;j<level;j++){
+			row[j]=Math.floor(Math.random()*6);		
+		}
+		board[i]=row;
+	}
+
+	currentColorIndex=board[0][0];
+
+	board[0][0]=-1;
+
+	flag=false;
+	drawColor(currentColorIndex);
+	flag=true;
+	_drawBoard();
+	step=0;
+	hint.innerText=step+'/22'
+}
+
+function _drawBoard(){
+	context.fillStyle=color[currentColorIndex];
+	context.fillRect(0,0,21*level,21*level);
+	for(i=0;i<level;i++){
+		for(j=0;j<level;j++){
+			if(board[i][j]!=-1){
+			context.fillStyle=color[board[i][j]];
+			context.fillRect(j*21,i*21,21,21);
+			}
+		}
+	}
+	hint.innerText=step+'/22';
+	if (step==22) {
+		var a=board[0][0];
+		var b=0;
+		for(i=0;i<level;i++){
+			for(j=0;j<level;j++){
+				if(board[i][j]==-a){
+					b++;
+				}
+			}
+		}
+		if (b==144) {alert('You win!');}
+		else{alert('You lost!');};
+	};
+}
+
+function drawColor(color_index){
+
+	if(color_index==currentColorIndex && flag) return;
+	for(i=0;i<level;i++){
+		for(j=0;j<level;j++){
+			if(board[i][j]==-1){
+				_findSameColor(i,j,color_index);
+			}
+		}
+	}
+	step++;
+	currentColorIndex=color_index;
+	_drawBoard();
+}
+
+function _findSameColor(cell_x,cell_y,color_index){
+	if(cell_x-1>=0 && board[cell_x-1][cell_y]==color_index) {board[cell_x-1][cell_y]=-1;_findSameColor(cell_x-1,cell_y,color_index);}
+	if(cell_x+1<level && board[cell_x+1][cell_y]==color_index) {board[cell_x+1][cell_y]=-1;_findSameColor(cell_x+1,cell_y,color_index);}
+	if(cell_y-1>=0 && board[cell_x][cell_y-1]==color_index) {board[cell_x][cell_y-1]=-1;_findSameColor(cell_x,cell_y-1,color_index);}
+	if(cell_y+1<level && board[cell_x][cell_y+1]==color_index) {board[cell_x][cell_y+1]=-1;_findSameColor(cell_x,cell_y+1,color_index);}
+}
+</script>
+</body>
+</html>

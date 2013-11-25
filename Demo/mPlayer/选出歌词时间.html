@@ -1,0 +1,99 @@
+<meta charset="utf-8">
+<style type="text/css">
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+	var lrc=[
+	'听着这首歌','思念成了我的功课','不情愿 一颗心','被你掌握',
+	'墙边的藤萝','遮不住小鹿的灵活','缝隙里 我看到','你眼中的炙热',
+	'我时时刻刻无法去摆脱','已经被你俘虏了太多',
+	'你时时刻刻从心里经过','我已经完全被你掌握','思念是我的功课',
+	'复习有你的角落','忍不住又哼唱','念念不忘那首歌',
+	'记住这首歌','秋天的唱词春天和','一开始 就准备','慢慢凋落',
+	'心底的角落','反反复复不停吟哦','没有错 没有错','只是一种错过',
+	'你是否是否还能想起我','想起当初我们的承诺',
+	'我无时无刻不在惦记着','披上嫁衣还刚刚哭过','错过的太多太多',
+	'隔断的太多太多','何时能再唱起','当初当初 那首歌',
+	'你是否是否还能想起我','想起当初我们的承诺',
+	'我无时无刻不在惦记着','披上嫁衣还刚刚哭过','错过的太多太多',
+	'隔断的太多太多','何时能再唱起','当初当初 那首歌'];
+
+	var lrcTime=[];
+	var a=0;
+
+	var myAudio = document.getElementById('au');
+	myAudio.addEventListener("timeupdate", function(){  
+	var ct = parseInt(myAudio.currentTime);  
+	// 当前的播放时间(舍弃小数点以下数据)  
+	var total = parseInt(myAudio.duration);  
+	// 整体播放时间(舍弃小数点以下数据)  
+	document.getElementById("div1").innerHTML =  
+	"播放时间：" + ct + "秒 / total : " + total + "秒";  
+	}, true); 
+
+	var obtn=document.getElementById('btn');
+	var op=document.getElementById('shijian');
+	obtn.onclick=function()
+	{
+		lrcTime[a]=myAudio.currentTime;
+		a++;
+		if (a==lrc.length) {
+			for (var i = 0; i < lrc.length; i++) {
+				op.innerHTML+='&apos;'+lrcTime[i]+'&apos;,';
+			};
+		};
+	}
+
+}
+</script>
+<audio id="au" controls autoplay loop>
+	<source src="ChuZhiLove.mp3" type="audio/mp3">
+</audio>
+<div id="div1"></div>
+<input type="button" value="time" id="btn">
+<p id="shijian"></p>
+<pre>
+听着这首歌
+思念成了我的功课
+不情愿 一颗心
+被你掌握
+墙边的藤萝
+遮不住小鹿的灵活
+缝隙里 我看到
+你眼中的炙热
+我时时刻刻无法去摆脱
+已经被你俘虏了太多
+你时时刻刻从心里经过
+我已经完全被你掌握
+思念是我的功课
+复习有你的角落
+忍不住又哼唱
+念念不忘那首歌
+
+记住这首歌
+秋天的唱词春天和
+一开始 就准备
+慢慢凋落
+心底的角落
+反反复复不停吟哦
+没有错 没有错
+只是一种错过
+你是否是否还能想起我
+想起当初我们的承诺
+我无时无刻不在惦记着
+披上嫁衣还刚刚哭过
+错过的太多太多
+隔断的太多太多
+何时能再唱起 当初当初
+那首歌
+
+你是否是否还能想起我
+想起当初我们的承诺
+我无时无刻不在惦记着
+披上嫁衣还刚刚哭过
+错过的太多太多
+隔断的太多太多
+何时能再唱起 当初当初
+那首歌
+</pre>

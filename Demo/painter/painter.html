@@ -1,0 +1,126 @@
+<!--
+	"再次遇到 忘了怎么微笑
+	难道虚伪的说 你最近过得好不好
+	然后谁先转身 走掉"   说好了不见面
+	恸听,
+	喜欢..
+	傲霜斗雪,冰莹致韵.
+	QQ:1336006643
+	Date:2013.8.2
+	Author:Uri
+-->
+<title>Painter</title>
+<style type="text/css">
+body{
+	background: rgb(243, 240, 240);
+}
+#canvas{
+	width: 0;
+	height: 0;
+}
+.dot{
+	width: 5px;
+	height: 5px;
+	background: gray;
+	position: absolute;
+	border-radius: 100px;
+}
+#func{
+	width: 150px;
+	height: auto;
+	border: 1px dashed gray;
+	position: absolute;
+}
+#clear{
+	width: 139px;
+	margin-left: 2px;
+}
+</style>
+
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+
+window.onload=function(){
+	init();
+	draw();
+}
+
+function init(){
+	$('clear').onclick=function(){clear();}
+	$('dsize').value=5;
+}
+
+function draw(){
+	document.onmousedown=function(){
+		this.onmousemove=function(eve){
+			var ev=eve || event;
+			var dv=document.createElement('div');
+			dv.className='dot';
+			dv.style.width=dv.style.height=$('dsize').value+'px';
+			dv.style.background=$('colors').value;
+			dv.style.left=ev.clientX+'px';
+			dv.style.top=ev.clientY+'px';
+			$('canvas').appendChild(dv);
+		}
+	}
+	document.onmouseup=function(){
+		document.onmousemove=function(){};
+	}
+}
+
+function clear(){
+	$('canvas').innerHTML='';
+}
+</script>
+
+<body id="bd">
+	<div id="canvas"></div>
+	<div id="func">
+		<div></div>
+		color
+		<select id="colors">
+			<optgroup label="cold">
+			<option value="gray" selected="selected">Gray</option>
+			<option value="black">Black</option>
+			<option value="AliceBlue ">AliceBlue </option>
+			<option value="Aqua">Aqua</option>
+			<option value="BlueViolet">BlueViolet</option>
+			<option value="CornflowerBlue">CornflowerBlue</option>
+			<option value="DarkGoldenRod">DarkGoldenRod</option>
+			<option value="DarkGray">DarkGray</option>
+			<option value="DarkOliveGreen">DarkOliveGreen</option>
+			<option value="DarkSlateGray">DarkSlateGray</option>
+			<option value="Indigo">Indigo</option>
+			<option value="LightBlue">LightBlue</option>
+			<option value="SpringGreen">SpringGreen</option>
+			<option value="SteelBlue">SteelBlue</option>
+			</optgroup>
+			<optgroup label="warm">
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="Bisque">Bisque</option>
+			<option value="Chartreuse">Chartreuse</option>
+			<option value="Coral">Coral</option>
+			<option value="Crimson">Crimson</option>
+			<option value="Darkorange">Darkorange</option>
+			<option value="DarkSalmon">DarkSalmon</option>
+			<option value="ForestGreen">ForestGreen</option>
+			<option value="Gold">Gold</option>
+			<option value="Green">Green</option>
+			<option value="HotPink">HotPink</option>
+			<option value="Khaki">Khaki</option>
+			<option value="LawnGreen">LawnGreen</option>
+			</optgroup>
+		</select>
+		size<br>
+		<textarea id="dsize" cols="15" rows="1"></textarea><br>
+		<input type="button" value="Clear" id="clear">
+	</div>
+	
+	<audio contorls loop autoplay hidden>
+		<source src="nevermeet.mp3" type="audio/mp3">
+		<source src="nevermeet.ogg" type="audio/ogg">
+	</audio>
+</body>
