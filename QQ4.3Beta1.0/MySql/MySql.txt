@@ -1,0 +1,4 @@
+MySQL 用户
+用户名:paiplace_Uri
+密码:lovotolqy
+Database：paiplace_QQ.
