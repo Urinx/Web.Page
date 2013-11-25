@@ -1,0 +1,370 @@
+<!--
+	8.12，七夕的前一天，不是相见，却是相离。
+	何当共剪西窗烛，却话巴山夜雨时。
+	曾记得你们当时这样说。
+	不知三年后如何，再回首，遥忆今日，是否会一笑一泪，忘经年...
+
+	「24岁的阿升你好，我是15岁的美加子……」
+	就像《星之声》的他们，相距8.6光年，等一封信等了8年。
+	最可怕的不是时间，是距离。
+	在邮件的末尾，
+	「喂，我们好像是，被宇宙和地球拆散的恋人似的」
+
+	Date:2013.8.6-2013.8.11
+	QQ:1336006643
+	Author:Uri
+-->
+<meta charset="utf-8">
+<head>
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body,div{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url(res/bg/22.jpg) no-repeat;
+	background-size: 100% 100%;
+	height: 700px;
+	font-family: Satisfy;
+}
+#iPhone{
+	width: 295px;
+	height: 633px;
+	background-image: url(res/bg/iphone-big-image.png);
+	background-size: 100% 100%;
+	position: absolute;
+	top: 50px;
+	left: 75%;
+}
+#statubar{
+	border: 0px solid red;
+	width: 261px;
+	height: 18px;
+	position: absolute;
+	top: 83px;
+	left: 19px;
+	overflow: hidden;
+	color: rgba(203,206,208,1);
+	line-height: 25px;
+	font-weight: bold;
+	font-size: 15px;
+}
+#screen{
+	border: 0px solid red;
+	width: 263px;
+	height: 453px;
+	position: absolute;
+	top: 103px;
+	left: 19px;
+	background-image: url(res/bg/pbg1.jpg);
+	background-size: 100% 100%;
+	overflow: hidden;
+	color: rgba(203,206,208,1);
+	font-weight: bolder;
+}
+#qq{
+	position: relative;
+	left: 80px;
+	top: 140px;
+}
+#motto{
+	font-size: 38px;
+	position: relative;
+	left: 7px;
+	top: 120px;
+}
+.icon{
+	border-radius: 15px;
+	width: 90px;
+	height: 90px;
+	margin: 3px;
+	margin-top: 1px;
+	margin-bottom: 0;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+
+#home{
+	width: 53px;
+	height: 53px;
+	border: 0px solid red;
+	border-radius: 50px;
+	background: transparent;
+	position: absolute;
+	top: 567px;
+	left: 124px;
+}
+
+#sframe{
+	width: 263px;
+	height: 453px;
+	position: absolute;
+	border: transparent;
+	top: 102px;
+	left: 19px;
+	display: none;
+}
+
+
+/*change iphone*/
+#div1{
+	position: absolute;
+	top: 580px;
+	left: 20%;
+}
+.pifu{
+	width: 100px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 15px;
+	font-weight: bolder;
+	color: white;
+	text-shadow: 0 0 5px #57c75c, 0 0 5px #57c75c, 0 0 5px #57c75c, 0 0 5px #ff00de, 0 0 10px #ff00de;
+	cursor: pointer;
+	transition: font-size 0.5s ease;
+	-moz-transition: font-size 0.5s ease;
+	-webkit-transition: font-size 0.5s ease;
+}
+.pifu:hover{
+	font-size: 20px;
+}
+#song{
+	width: 300px;
+	border: 1px solid gray;
+	background: rgba(0,0,0,0.9);
+	color: white;
+	position: absolute;
+	top: 30%;
+	left: 75%;
+	text-indent: 2em;
+	opacity: 0;
+}
+#song article{
+	display: none;
+	text-indent: 0em;
+	padding-left: 20px;
+}
+</style>
+</head>
+<script type="text/javascript" src="move.js"></script>
+<script type="text/javascript">
+var locksta=0;
+window.onload=function()
+{
+	iPhoneMove();
+	systime();
+	qq();
+	//homeBtn();
+}
+
+function systime()
+{
+	var statuBar=document.getElementById('statubar');
+	var timebar=statuBar.getElementsByTagName('span')[0];
+
+	var ati=document.getElementsByTagName('article');
+	var au=document.getElementsByTagName('audio')[0];
+	var i=0;
+	ati[0].style.display='block';
+
+	setInterval(function(){
+		var oDate=new Date();
+		if (oDate.getHours()<=9) {
+			str1='0'+oDate.getHours();
+		}
+		else{
+			str1=oDate.getHours();
+		};
+		if (oDate.getMinutes()<=9) {
+			str2=':0'+oDate.getMinutes();
+		}
+		else{
+			str2=':'+oDate.getMinutes();
+		}
+		timebar.innerHTML=str1+str2;
+		
+		//gequ
+		if (au.ended) {
+			ati[i].style.display='none';
+			i==12?i=0:i++;
+			au.src='res/bg/'+i+'.mp3';
+			au.play();
+			ati[i].style.display='block';
+		};
+	},100);
+}
+
+function screenD(a)
+{
+	if (a==0) {
+	document.getElementById('screen').style.display='none';
+	}
+	else{
+	document.getElementById('screen').style.display='block';
+	document.getElementById('sframe').style.display='none';
+	};
+}
+
+function qq(){
+	var q=document.getElementById('qq');
+	q.onclick=function(){
+		screenD('0');
+		var osframe=document.getElementById('sframe');
+		osframe.style.display='block';
+		//osframe.src='Introduction.html';
+		osframe.src='Introduction.html';
+	}
+}
+
+function iPhoneMove(){
+	var ip=document.getElementById('iPhone');
+	Move(ip,{left:670},function(){
+		var so=document.getElementById('song');
+		Move(so,{opacity:100});
+	});
+}
+</script>
+
+
+
+<!--
+	change iphone
+-->
+<div id="iPhone">
+
+	<div id="statubar">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span></span>
+	</div>
+
+	<div id="screen">
+		<img src="res/head/Icon2x.png" class="icon" id="qq">
+		<p id="motto">Make Conmunication <br>Start from heart</p>
+	</div>
+
+	<iframe src="" id="sframe" scolling="no"></iframe>
+
+	<input type="button" value="" id="home">
+</div>
+
+<div id="song">
+	<div>
+		<h2>八月</h2>
+		<article>
+			风吹过 你的笑容<br>
+			轻拂过 我的感动<br>
+			生活时常和我们开着玩笑，你期待什么，什么就会离你越远<br>
+			我想成为你最好的邂逅，最难的再见<p></p>
+		</article>
+
+		<article>
+			跟你说再见，我平静的脸<br>
+			我会牢牢记住你的脸<br>
+			我会珍惜你给的思念<br>
+			这些日子在我心中<br>
+			永远都不会抹去<p></p>
+		</article>
+
+		<article>
+			多年以后 你回到我身边<br>
+			不安全 充满了你疲倦的双眼<br>
+			看着我 也告诉我<br>
+			你是否 依然相信童话<br>
+			你曾对我说 每颗心都寂寞<br>
+			每颗心都脆弱都渴望被触摸<br>
+			但你的心 永远的燃烧着<br>
+			永远的 不会退缩<p></p>
+		</article>
+
+		<article>
+			想回到过去<br>
+			试着让故事继续<br>
+			至少不再让你离我而去<br>
+			分散时间的注意<br>
+			这次会抱得更紧<br>
+			这样挽留不知还来不来得及<p></p>
+		</article>
+
+		<article>
+			花儿花儿为谁开<br>
+			一年春去春又来<br>
+			花儿说它为一个人等待<br>
+			无可奈何花落去<br>
+			似曾相识燕归来<br>
+			花园里 小路上 独徘徊<p></p>
+		</article>
+
+		<article>
+			我到了这个时候还是一样<br>
+			夜里的寂寞容易叫人悲伤<br>
+			我不敢想的太多<br>
+			因为我一个人<p></p>
+		</article>
+
+		<article>
+			期待让人越来越疲惫<br>
+			谁和我一样<br>
+			等不到他的谁<br>
+			爱上你我总在学会<br>
+			寂寞的滋味<br>
+			一个人撑伞 一个人擦泪<br>
+			一个人好累<p></p>
+		</article>
+
+		<article>
+			在清晨 在夜晚<br>
+			我在思念 在哭泣<br>
+			那曾经美好的时光<br>
+			是我永远沉醉的梦想<br>
+			那结伴同行的岁月<br>
+			给我勇往直前的力量<p></p>
+		</article>
+
+		<article>
+			明天你好 含着泪微笑<br>
+			越美好 越害怕得到<br>
+			每一次哭 又笑着奔跑<br>
+			一边失去 一边在寻找<p></p>
+		</article>
+
+		<article>
+			那一天我漫步在夕阳下<br>
+			看见一对恋人相互依偎<br>
+			那一刻往事涌上心头<br>
+			刹那间我泪如雨下<br>
+			昨夜我静呆立雨中<br>
+			望着街对面一动不动<br>
+			那一刻仿佛回到从前<br>
+			不由得我已泪留满面<p></p>
+		</article>
+
+		<article>
+			8.12，七夕的前一天，不是相见，却是相离。<br>
+			何当共剪西窗烛，却话巴山夜雨时。<br>
+			曾记得你们当时这样说。<br>
+			不知三年后如何，再回首，遥忆今日，是否会一笑一泪，忘经年...<p></p>
+		</article>
+
+		<article>
+			「24岁的阿升你好，我是15岁的美加子……」<br>
+			就像《星之声》的他们，相距8.<br>6光年，等一封信等了8年。<br>
+			最可怕的不是时间，是距离。<br>
+			在邮件的末尾，<br>
+			「喂，我们好像是，被宇宙和地球拆散的恋人似的」<p></p>
+		</article>
+
+		<article>
+			时间滴滴嗒嗒地<br>
+			转个不停<br>
+			勾勾手<br>
+			埋藏幸福的密语<br><br>
+			让我们...期待九月<p></p>
+		</article>
+	</div>
+	<audio autoplay controls>
+		<source src="res/bg/0.mp3">
+		<source src="res/bg/0.ogg">
+	</audio>
+</div>

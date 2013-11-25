@@ -1,0 +1,75 @@
+<meta charset="utf-8">
+<style type="text/css">
+body,div,ul,video{
+	margin: 0;
+	padding: 0;
+}
+body{
+	border: 0px solid red;
+	width: 263px;
+	height: 453px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+ul{
+	list-style: none;
+	position: relative;
+	left: 0;
+	top: 0;
+}
+div,video{
+	width: 263px;
+	height: 460px;
+	border: 0px solid gray;
+	float: left;
+}
+video{
+	width: 263px;
+	height: 466px;
+}
+</style>
+
+<script type="text/javascript">
+
+window.onload=function(){
+	var dv=document.getElementsByTagName('div');
+	for (var i = 0; i < dv.length; i++) {
+		dv[i].style.background='url(res/introduction/bgDefaultMask_0'+(i+1)+'-ip5.jpg)';
+		dv[i].style.backgroundSize='100% 100%';
+	};
+	var gi=document.getElementById('guide');
+	gi.src='res/introduction/guide.mp4';
+	
+	var timer=null;
+	var u=document.getElementById('ul1');
+	var speed=5;
+	timer=setInterval(function(){
+		u.style.top=u.offsetTop-speed+'px';
+		if (u.offsetTop<=-1840) {
+			u.style.top='-1840px';
+			clearInterval(timer);
+			gt();
+		};
+	},30);
+}
+
+function gt(){
+	var gi=document.getElementById('guide');
+	gi.play();
+	var timer=null;
+	timer=setInterval(function(){
+		if (gi.ended) {
+			clearInterval(timer);
+			document.location.href='qqlogin.html';
+		};
+	},30);
+}
+</script>
+
+<ul id="ul1">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<video id="guide"></video>
+</ul>

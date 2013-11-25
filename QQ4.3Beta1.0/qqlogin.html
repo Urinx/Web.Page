@@ -1,0 +1,162 @@
+<meta charset="utf-8">
+<style type="text/css">
+body,div,form,input,article{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 263px;
+	height: 453px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+section,article{
+	border: 0px solid red;
+	width: 263px;
+	height: 453px;
+}
+section{
+	background: url('res/login/Default-568h@2x.png') no-repeat;
+	background-size: 100% 100%;
+}
+article{
+	background: url('res/login/login_bg_ip5@2x.jpg') no-repeat;
+	background-size: 100% 100%;
+	display: none;
+}
+.avatar{
+	width: 60px;
+	height: 60px;
+	background: url('res/login/login_avatar@2x.png') no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+}
+.avatar img{
+	padding: 3px;
+	width: 54px;
+	height: 54px;
+	border-radius: 5px;
+}
+input{
+	position: relative;
+	width: 150px;
+	background: none;
+	outline: none;
+	border: transparent;
+}
+#acc,#pss{
+	position: absolute;
+	left: 4px;
+	width: 250px;
+	height: 40px;
+	background: url('res/login/login_textfield_top@2x.png') no-repeat;
+	background-size: 100% 100%;
+	font-size: 15px;
+}
+#acc{
+	top: 170px;
+	z-index: 1;
+}
+	#acc span{
+		position: relative;
+		top: 15px;
+		left: 10px;
+	}
+	#acc input{
+		top: 15px;
+		left: 20px;
+	}
+	#acc img{
+		position: relative;
+		top: 15px;
+		left: 40px;
+		width: 15px;
+		height: 10px;
+	}
+#pss{
+	top: 205px;
+}
+	#pss span{
+		position: relative;
+		top: 15px;
+		left: 10px;
+	}
+	#pss input{
+		top: 15px;
+		left: 20px;
+	}
+#login{
+	position: absolute;
+	top: 260px;
+	left: 4px;
+	width: 250px;
+	height: 40px;
+	border-radius: 7px;
+	background: url('res/login/login_btn_blue_nor@2x.png') no-repeat;
+	background-size: 100% 100%;
+}
+#login:hover{
+	background: url('res/login/login_btn_blue_press@2x.png');
+	background-size: 100% 100%;
+}
+	#login input{
+		cursor:pointer;
+		top: 10px;
+		left: 50px;
+	}
+footer{
+	position: absolute;
+	top: 425px;
+	left: 70px;
+}
+footer span{
+	cursor: pointer;
+	font-size: 10px;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function(){
+	var timer=null;
+	var i=0;
+	clearInterval(timer);
+	timer=setInterval(function(){
+		i++;
+		if (i==10) {//11
+			document.getElementsByTagName('article')[0].style.display='block';
+			clearInterval(timer);
+		};
+	},100);
+}
+</script>
+
+
+<body>
+	<section>
+		<article>
+			<div class="avatar">
+				<img src="res/login/login_avatar_default@2x.png">
+			</div>
+			
+			<form action="contacts.php" method="post">
+				<div id="acc">
+					<span>帐号</span><input type="text" name="account" id="txt1">
+					<img src="res/login/login_textfield_more@2x.png">
+				</div>
+				<div id="pss">
+					<span>密码</span><input type="password" name="password" id="txt2">
+				</div>
+				
+				<div id="login">
+					<input type="submit" name="log" value="">
+				</div>
+			</form>
+
+			<footer>
+				<span>找回密码</span>&nbsp;&nbsp; | &nbsp;&nbsp;<span>注册帐号</span>
+			</footer>
+		</article>
+	</section>
+</body>
