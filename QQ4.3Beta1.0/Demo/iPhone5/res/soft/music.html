@@ -1,0 +1,118 @@
+<meta charset="utf-8">
+<style type="text/css">
+body,div,footer{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 261px;
+	height: 453px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	overflow: hidden;
+}
+nav{
+	height: 50px;
+	background: black;
+	font-size: 50px;
+	font-weight: bolder;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+}
+#mp{
+	width: 261px;
+	height: 363px;
+	background: black;
+	background-image: url(../pbg/pbg29.jpg);
+	background-size: 100% 100%;
+}
+#mp img{
+	position: relative;
+	top: 40px;
+	left: 40px;
+}
+#mp p{
+	color: white;
+	width: 261px;
+	font-size: 30px;
+	font-weight: bolder;
+	line-height: 10px;
+	text-align: center;
+	text-shadow: 0 0 5px #57c75c, 0 0 5px #57c75c, 0 0 5px #57c75c, 0 0 5px #ff00de, 0 0 10px #ff00de;
+}
+#info{
+	position: absolute;
+	top: 265px;
+}
+footer{
+	height: 40px;
+	background: black;
+	color: white;
+	font-size: 30px;
+	font-weight: bolder;
+	line-height: 40px;
+	text-align: center;
+	text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+}
+span{
+	cursor: pointer;
+}
+span:hover{
+	text-shadow: 0 0 5px #d788a1, 0 0 5px #d788a1, 0 0 5px #d788a1, 0 0 5px #ff00de, 0 0 10px #ff00de;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var timebar=document.getElementsByTagName('p')[2];
+	var myAudio = document.getElementById('au');
+	myAudio.addEventListener("timeupdate", function()
+		{
+			
+			var ct = parseInt(myAudio.currentTime);   
+			var total = parseInt(myAudio.duration);    
+			timebar.innerHTML=Math.floor(ct/60)+':'+(ct%60)+'/'+Math.floor(total/60)+':'+(total%60);
+			
+		}
+	,true);
+
+	var ctr=document.getElementsByTagName('span')[1];
+	var a=0;
+	ctr.onclick=function()
+	{
+		if (a==0) {
+			myAudio.play();
+			this.innerHTML='||';
+			a=1;
+		}
+		else{
+			myAudio.pause();
+			this.innerHTML='|>';
+			a=0;
+		};
+	}
+}
+</script>
+
+<body>
+	<nav>Music</nav>
+	<div id="mp">
+		<img src="../bgm/QRCode.jpg">
+		<div id="info">
+		<p>或许</p>
+		<p>词曲：秦欢</p>
+		<p>0:0/3:58</p>
+		</div>
+	</div>
+	<footer>
+		<span>|&lt;&lt;</span>
+		<span>|></span>
+		<span>&gt;&gt;|</span>
+	</footer>
+	<audio controls hidden id="au">
+		<source src="../bgm/huoxu.mp3" type="audio/mp3">
+	</audio>
+</body>

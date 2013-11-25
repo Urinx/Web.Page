@@ -1,0 +1,294 @@
+<!--
+	我站在山之顶峰，俯瞰世间万物。
+
+	又是一场繁华落寞，甘愿平淡的人有几个。
+	世人都为功成名就，却忘记昔日的承诺。
+	挥手远离繁华落寞，甘愿平淡的人只剩你我。
+	只愿对坐饮春秋，在山崖峰等日落。
+
+	狮子座的我，眼里不许没有，日不落。
+
+	QQ:1336006643
+	Date:2013.9.1
+	Author:Uri
+-->
+<meta charset="utf-8">
+<style type="text/css">
+body{
+	background: url(res/bg2.jpg) no-repeat;
+	background-size: 100% 100%;
+	height: 755px;
+}
+canvas{
+	background: rgba(0,0,0,0.2);
+}
+#div1,#div2{
+	position: absolute;
+	border: 1px solid rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.4);
+	color: rgba(255,255,255,0.9);
+}
+div button{
+	cursor: pointer;
+	border: none;
+}
+div input,div select{
+	border: none;
+}
+#div1{
+	width: 250px;
+	height: 400px;
+	position: absolute;
+	top: 200px;
+	right: 20px;
+}
+#div1 p{
+	text-indent: 2em;
+}
+#div2{
+	top: 200px;
+	left: 100px;
+	width: 623px;
+	height: 400px;
+}
+#div2 div,#div2 canvas{
+	margin: 5px;
+}
+#btn1{}
+</style>
+
+<script type="text/javascript">
+window.onload=function(){
+	canvas2();
+}
+
+function canvas2(){
+	var canvas2=document.getElementById('canvas2');
+	var btn1=document.getElementById('btn1');
+	var btn2=document.getElementById('btn2');
+	var ipu2=document.getElementById('choose');
+	var can2=canvas2.getContext('2d');
+	var w=300;
+	var h=400;
+
+
+	var img=new Image();
+	img.src='res/baqi.jpg';
+
+
+	if (typeof(FileReader)==='undefined') {
+		alert('抱歉，你的浏览器不支持 FileReader，请使用现代浏览器操作！');
+	}
+	else{
+		btn1.addEventListener('change',readFile,false);
+	}
+
+	function readFile(){
+		var file=this.files[0];
+		if (/image\/\w+/.test(file.type)) {
+			var reader=new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload=function(){
+				img.src=this.result;
+			}
+		};
+	}
+
+
+	img.onload=function(){
+		can2.drawImage(img,0,0,w,h);
+		var imgdas=can2.getImageData(0,0,w,h);
+
+		btn2.onclick=function(){
+			var k=ipu2.value;
+			var temp=[];
+			var temp2=[];
+			var newimgdas=can2.createImageData(w,h);
+
+			switch(k){
+				case '1':
+				temp=set1(imgdas.data);
+				break;
+
+				case '2':
+				temp=set2(imgdas.data);
+				break;
+
+				case '3':
+				temp2=set2(imgdas.data);
+				temp=set3(temp2);
+				break;
+
+				default:
+				alert('I\'m sorry to told you that this ain\'t avalible now.');
+				break;
+			}
+			putColor(newimgdas,temp);
+			can2.clearRect(310,0,w,h);
+			can2.putImageData(newimgdas,310,0);
+		}
+	}
+
+	function set1(arr){
+		var newArr=[];
+		var bb=0;
+		for (var i = 0; i < arr.length; i=i+4) {
+				bb=(arr[i]+arr[i+1]+arr[i+2])/3;
+				newArr[i]=bb;
+				newArr[i+1]=bb;
+				newArr[i+2]=bb;
+				newArr[i+3]=255;
+			};
+		return newArr;
+	}
+
+	function set2(arr){
+		var newArr=[];
+		var bb=0;
+		for (var i = 0; i < arr.length; i=i+4) {
+				bb=(arr[i]+arr[i+1]+arr[i+2])/3;
+				if (bb>128) {
+					newArr[i]=255;
+					newArr[i+1]=255;
+					newArr[i+2]=255;
+				}
+				else{
+					newArr[i]=0;
+					newArr[i+1]=0;
+					newArr[i+2]=0;
+				}
+				newArr[i+3]=255;
+			};
+		return newArr;
+	}
+
+	function set3(arr){
+		var newArr=[];
+		var color=[];
+		var color1=[];
+		var color2=[];
+		var color3=[];
+		var color4=[];
+		var c=255;
+		for (var j = 0; j < h; j++) {
+			for (var i = 0; i < w; i++) {
+				color=findDot(arr,i,j,w);
+				color1=findDot(arr,i+1,j,w);
+				color2=findDot(arr,i,j+1,w);
+				color3=findDot(arr,i-1,j,w);
+				color4=findDot(arr,i,j-1,w);
+				if (color[0]==0) {
+					if (color[0]==color1[0] && color[0]==color2[0] && color[0]==color3[0] && color[0]==color4[0]) {
+						c=255;
+					}
+					else{
+						c=0;
+					}
+				}
+				else{
+					c=255;
+				}
+				newArr.push(c);
+				newArr.push(c);
+				newArr.push(c);
+				newArr.push(255);
+			};
+		};
+		return newArr;
+	}
+
+	function set5(arr){
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=arr[i]>125?255:0;
+				newArr[i+1]=arr[i+1]>125?255:0;
+				newArr[i+2]=arr[i+2]>125?255:0;
+				newArr[i+3]=255;
+			};
+		return newArr;
+	}
+
+
+	function set10(arr,k){
+		var rarr=randomArr(w*h,w*h*k);
+		var newArr=[];
+		for (var i = 0; i < arr.length; i=i+4) {
+				newArr[i]=arr[i];
+				newArr[i+1]=arr[i+1];
+				newArr[i+2]=arr[i+2];
+				newArr[i+3]=255;
+			};
+		for (var i = 0; i < rarr.length; i++) {
+			newArr[4*rarr[i]]=Math.floor(Math.random()*255);
+			newArr[4*rarr[i]+1]=Math.floor(Math.random()*255);
+			newArr[4*rarr[i]+2]=Math.floor(Math.random()*255);
+			newArr[4*rarr[i]+3]=255;
+		};
+		return newArr;
+	}
+}
+
+
+function putColor(obj,arr){
+	for (var i = 0; i < arr.length; i++) {
+		obj.data[i]=arr[i];
+	};
+}
+
+function findDot(arr,x,y,w){
+	var newArr=[];
+	if (x>=0 && y>=0) {
+		var a=4*(x+w*y);
+		newArr[0]=arr[a];
+		newArr[1]=arr[a+1];
+		newArr[2]=arr[a+2];
+		newArr[3]=255;
+	};
+	return newArr;
+}
+
+function randomArr(all,parts){
+	var arr=[];
+	var newArr=[];
+	for (var i = 0; i < all; i++) {
+		arr.push(i);
+	};
+	for (var i = 0; i < parts; i++) {
+		newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1));
+	};
+	return newArr;
+}
+</script>
+
+
+<body>
+<div id="div1">
+	<center><h1>初步处理</h1></center>
+<p>首先是对图片进行灰度处理，一般进行灰度处理并没能达到下一步进行轮廓提取的要求，因为，图片的信息还很朦胧，图像像素之间的色差还不明显。因此，在此基础上，直接对其进行了二值化处理。
+</p>
+<p>此时，我们得到了一个像素色差非常大的图，为下一步进行轮廓的提取提供了很有利的条件，在轮廓提取方面，根据模式识别书上提供的一些算法，选择最简单的掏空内部点的算法。
+</p>
+</div>
+
+<!--图像识别-->
+<div id="div2">
+	<canvas id="canvas2" width="610" height="340"></canvas>
+	<div>
+		图像识别<br>
+		<input type="file" id="btn1">
+		<select id="choose">
+			<option value="1">一般灰度处理</option>
+			<option value="2">二值化处理</option>
+			<optgroup label="轮廓提取">
+			<option value="3">内部掏空算法</option>
+			</optgroup>
+			<option value="4"></option>
+		</select>
+		<button id="btn2">Output</button>
+	</div>
+</div>
+
+<audio autoplay loop controls hidden>
+	<source src="res/luomo.mp3">
+</audio>
+</body>

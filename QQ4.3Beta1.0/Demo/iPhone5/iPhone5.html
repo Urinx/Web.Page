@@ -1,0 +1,780 @@
+<!--
+	这个完成后下段时间要为期末奋斗了，HaHa！
+	不过今天好像是某位高中同学的生日（QQ上是这样说的），在这里祝她生日快乐。
+	以后有可能的话，每位同学过生日那天，我都要完成一个作品，依此来激励自己。
+	QQ:1336006643
+	Date:2013.5.26
+	Author:Uri
+-->
+<meta charset="utf-8">
+<style type="text/css">
+body,div{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: rgba(225,225,225,0.8);
+}
+#iPhone{
+	width: 330px;
+	height: 680px;
+	background-image: url(res/skim/BlackiPhone.png);
+	background-size: 100% 100%;
+	position: absolute;
+	left: 35%;
+}
+#statubar{
+	width: 261px;
+	height: 15px;
+	position: absolute;
+	top: 103px;
+	left: 37px;
+	overflow: hidden;
+	color: rgba(203,206,208,1);
+	line-height: 15px;
+	font-weight: bold;
+	font-size: 5px;
+}
+#screen{
+	width: 261px;
+	height: 453px;
+	position: absolute;
+	top: 120px;
+	left: 37px;
+	background-image: url(res/pbg/pbg1.jpg);
+	background-size: 100% 100%;
+	overflow: hidden;
+	color: rgba(203,206,208,1);
+	font-weight: bolder;
+}
+
+
+ul{
+	list-style: none;
+	position: absolute;
+	top: -17px;
+	left: -41px;
+	width: 1052px;
+	transition: left 1s ease;
+	-moz-transition: left 1s ease;
+	-webkit-transition: left 1s ease;
+}
+li{
+	width: 262px;
+	height: 373px;
+	float: left;
+}
+
+
+.soft{
+	width: 64px;
+	height: 64px;
+	float: left;
+	overflow: hidden;
+}
+
+
+#sidebar{
+	width: 261px;
+	height: 16px;
+	position: absolute;
+	top: 372px;
+	left: -1px;
+	overflow: hidden;
+}
+.dot{
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background: rgba(223,225,227,0.5);
+	float: left;
+	position: relative;
+	top: 2px;
+}
+.dot:hover{
+	cursor: pointer;
+	width: 9px;
+	height: 9px;
+	border: 2px solid rgba(41,122,113,0.8);
+}
+.dot2{
+	float: left;
+}
+
+
+#menu{
+	position: absolute;
+	top: 388px;
+}
+.icon{
+	width: 55px;
+	height: 55px;
+	margin: 3px;
+	margin-top: 1px;
+	margin-bottom: 0;
+	background-size: 100% 100%;
+	transition: width 0.5s;
+	transition: height 0.5s;
+	-moz-transition: width 0.5s;
+	-moz-transition: height 0.5s;
+	-webkit-transition: width 0.5s;
+	-webkit-transition: height 0.5s;
+}
+.icon:hover{
+	margin: 0;
+	width: 63px;
+	height: 64px;
+	cursor: pointer;
+}
+.icon~div{
+	width: 63px;
+	text-align: center;
+	line-height: 8px;
+	color: rgba(203,206,208,1);
+	font-size: 1px;
+}
+
+#home{
+	width: 60px;
+	height: 60px;
+	border: 0;
+	border-radius: 50px;
+	background: transparent;
+	position: absolute;
+	top: 590px;
+	left: 138px;
+}
+
+#lockcir{
+	width: 110px;
+	height: 110px;
+	border-radius: 60px;
+	position: absolute;
+	top: 140px;
+	left: 140px;
+	display: none;
+	text-align: center;
+	line-height: 110px;
+	font-size: 70px;
+	color: rgba(22,53,222,0.5);
+}
+#lockcir:hover{
+	border: 5px solid gray;
+}
+#sframe{
+	width: 261px;
+	height: 453px;
+	position: absolute;
+	border: transparent;
+	top: 120px;
+	left: 37px;
+	display: none;
+}
+.pifu{
+	width: 100px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 15px;
+	font-weight: bolder;
+	color: white;
+	text-shadow: 0 0 5px #57c75c, 0 0 5px #57c75c, 0 0 5px #57c75c, 0 0 5px #ff00de, 0 0 10px #ff00de;
+	cursor: pointer;
+	transition: font-size 0.5s ease;
+	-moz-transition: font-size 0.5s ease;
+	-webkit-transition: font-size 0.5s ease;
+}
+.pifu:hover{
+	font-size: 20px;
+}
+#div1{
+	position: relative;
+	top: 300px;
+	left: 20%;
+}
+</style>
+
+<script type="text/javascript">
+var locksta=0;
+window.onload=function()
+{
+	systime();
+	dotcik();
+	homeBtn();
+	softClick();
+	skimcg();
+}
+
+function systime()
+{
+	var statuBar=document.getElementById('statubar');
+	var timebar=statuBar.getElementsByTagName('span')[0];
+
+	setInterval(function(){
+		var oDate=new Date();
+		if (oDate.getHours()<=9) {
+			str1='0'+oDate.getHours();
+		}
+		else{
+			str1=oDate.getHours();
+		};
+		if (oDate.getMinutes()<=9) {
+			str2=':0'+oDate.getMinutes();
+		}
+		else{
+			str2=':'+oDate.getMinutes();
+		}
+		timebar.innerHTML=str1+str2;
+	},100);
+}
+
+function dotcik()
+{
+	var oDot=document.getElementsByClassName('dot');
+	for (var i = 0; i < oDot.length; i++) {
+		oDot[i].index=i;
+		oDot[i].onclick=function()
+		{
+			ulMoveTo(this.index);
+			for (var i = 0; i < oDot.length; i++) {
+				oDot[i].style.background='rgba(223,225,227,0.5)';
+			};
+			this.style.background='black';
+		}
+	};
+}
+
+function ulMoveTo(liIndex)
+{
+	var oUl=document.getElementsByTagName('ul')[0];
+	switch(liIndex)
+	{
+		case 0:
+		oUl.style.left='-41px';
+		break;
+		case 1:
+		oUl.style.left='-304px';
+		break;
+		case 2:
+		oUl.style.left='-567px';
+		break;
+		case 3:
+		oUl.style.left='-830px';
+		break;
+		default:break;
+	}
+}
+
+function screenD(a)
+{
+	if (a==0) {
+	document.getElementById('screen').style.display='none';
+	}
+	else{
+	document.getElementById('screen').style.display='block';
+	document.getElementById('sframe').style.display='none';
+	};
+}
+
+function homeBtn()
+{
+	var oBtn=document.getElementById('home');
+	oBtn.onclick=function()
+	{
+		if (locksta==1) {
+			lockScreen();
+		}
+		else{screenD('1');};
+	}
+}
+
+function softClick()
+{
+	var softs=document.getElementsByClassName('soft');
+	for (var i = 0; i < softs.length; i++) {
+		softs[i].index=i;
+		softs[i].onclick=function()
+		{
+			softGo(this.index);
+		}
+	};
+}
+
+function softGo(b)
+{
+	//alert(b);
+	switch(b)
+	{
+		case 39:
+			screenD('0');
+			locksta=1;
+			break;
+		
+		case 58:
+			screenD('0');
+			var osframe=document.getElementById('sframe');
+			osframe.style.display='block';
+			osframe.src='res/soft/flood-it.html';
+			break;
+
+		case 85:
+			screenD('0');
+			var osframe=document.getElementById('sframe');
+			osframe.style.display='block';
+			osframe.src='res/soft/safari.html';
+			break;
+		
+		case 19:
+			screenD('0');
+			var osframe=document.getElementById('sframe');
+			osframe.style.display='block';
+			osframe.src='res/soft/music.html';
+			break;
+		
+		default:
+			alert('该功能正在实现中.../_\\'+'\n'+'目前已实现的有：'+'\n'+'音乐music,锁屏lock,'+'\n'+'浏览器safari,游戏flood-it');
+			break;
+	}
+}
+
+function lockScreen()
+{
+	var sc=document.getElementById('screen');
+	var lockCir=document.getElementById('lockcir');
+	var timer=null;
+
+	document.getElementsByTagName('ul')[0].style.display='none';
+	document.getElementById('sidebar').style.display='none';
+	document.getElementById('menu').style.display='none';
+	sc.style.display='block';
+	lockCir.style.display='block';
+	sc.style.backgroundImage='url(res/pbg/pbg18.jpg)';
+
+	lockCir.onmousedown=function()
+	{
+		clearInterval(timer);
+		var c=3;
+		timer=setInterval(function(){
+			lockCir.innerHTML=c;
+			c--;
+			if (c==-1) {
+				sc.style.backgroundImage='url(res/pbg/pbg1.jpg)';
+				lockCir.style.display='none';
+				document.getElementsByTagName('ul')[0].style.display='block';
+				document.getElementById('sidebar').style.display='block';
+				document.getElementById('menu').style.display='block';
+				lockCir.innerHTML='@';
+				locksta=0;
+				clearInterval(timer);
+			};
+		},1000);
+	}
+	lockCir.onmouseup=function()
+	{
+		clearInterval(timer);
+	}
+}
+
+function skimcg()
+{
+	var sk=document.getElementsByClassName('pifu');
+	var ip=document.getElementById('iPhone');
+	for (var i = 0; i < sk.length; i++) {
+		sk[i].onclick=function()
+		{
+			ip.style.backgroundImage='url(res/skim/'+this.innerHTML+'.png)';
+		}
+	};
+}
+</script>
+
+<div id="iPhone">
+
+	<div id="statubar">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span></span>
+	</div>
+
+	<div id="screen">
+		<ul>
+			<li>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/8.png);"></div>
+					<div>Mensajes</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/1.png);"></div>
+					<div>Calendario</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/17.png);"></div>
+					<div>Fotos</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/2.png);"></div>
+					<div>Camara</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/23.png);"></div>
+					<div>Video</div>
+				</article>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/22.png);"></div>
+					<div>Contactos</div>
+				</article>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/18.png);"></div>
+					<div>Calculadora</div>
+				</article>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/19.png);"></div>
+					<div>Reloj</div>
+				</article>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/45.png);"></div>
+					<div>Game Center</div>
+				</article>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/46.png);"></div>
+					<div>Notasdevoz</div>
+				</article>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/20.png);"></div>
+					<div>Brujula</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/5.png);"></div>
+					<div>YouTobe</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/6.png);"></div>
+					<div>Stocks</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/3.png);"></div>
+					<div>Mapas</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/4.png);"></div>
+					<div>Tiempo</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/7.png);"></div>
+					<div>Notas</div>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/9.png);"></div>
+					<div>iTunes</div>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/12.png);"></div>
+					<div>App Store</div>
+				</article><article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/10.png);"></div>
+					<div>Ajustes</div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/13.png);"></div>
+					<div>Music</div>
+				</article>
+			</li>
+			<li>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/21.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/54.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/24.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/25.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/300.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/301.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/302.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/303.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/304.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/305.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/306.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/307.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/308.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/309.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/310.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/311.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/312.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/313.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/314.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/315.png);"></div>
+					<div>Lock</div>
+				</article>
+			</li>
+			<li>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/400.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/401.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/402.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/403.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/404.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/405.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/406.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/407.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/408.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/409.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/410.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/411.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/412.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/413.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/414.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/415.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/416.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/417.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/418.jpg);"></div>
+					<div>Flood-it</div>
+				</article>
+			</li>
+			<li>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/500.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/501.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/502.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/503.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/504.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/505.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/506.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/507.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/508.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/509.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/510.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/511.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/512.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/513.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/514.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/515.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/516.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/517.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/518.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/519.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/520.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/521.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/522.png);"></div>
+					<div></div>
+				</article>
+				<article class="soft">
+					<div class="icon" style="background-image: url(res/softcon/523.png);"></div>
+					<div></div>
+				</article>
+			</li>
+		</ul>
+		
+
+		<article id="sidebar">
+			<div class="dot2">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+			<div class="dot"></div>
+			<div class="dot2">&nbsp;</div>
+			<div class="dot"></div>
+			<div class="dot2">&nbsp;</div>
+			<div class="dot"></div>
+			<div class="dot2">&nbsp;</div>
+			<div class="dot"></div>
+		</article>
+
+		<footer id="menu">
+			<article class="soft">
+				<div class="icon" style="background-image: url(res/softcon/11.png);" id="phone"></div>
+				<div>Phone</div>
+			</article>
+			<article class="soft">
+				<div class="icon" style="background-image: url(res/softcon/14.png);"></div>
+				<div>Mail</div>
+			</article>
+			<article class="soft">
+				<div class="icon" style="background-image: url(res/softcon/15.png);"></div>
+				<div>Safari</div>
+			</article>
+			<article class="soft">
+				<div class="icon" style="background-image: url(res/softcon/16.png);"></div>
+				<div>iPod</div>
+			</article>
+		</footer>
+
+		<div id="lockcir">@</div>
+	</div>
+	<iframe src="" id="sframe" scolling="no"></iframe>
+	<input type="button" value="" id="home">
+</div>
+
+<div id="div1">
+<div class="pifu">BlackiPhone</div><div class="pifu">WhiteiPhone</div>
+</div>

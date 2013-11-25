@@ -1,0 +1,86 @@
+<meta charset="utf-8">
+<style type="text/css">
+body,div,footer{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 261px;
+	height: 453px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+nav{
+	height: 50px;
+	background: rgba(137,154,184,0.5);
+}
+input{
+	position: absolute;
+	color: rgba(22,42,53,0.5);
+	outline: none;
+}
+#http{
+	top: 20px;
+	left: 10px;
+	border-radius: 5px;
+}
+#google{
+	width: 80px;
+	top: 20px;
+	left: 180px;
+	border-radius: 50px;
+	text-indent: 1em;
+}
+#wz{
+	position: absolute;
+	top: 24px;
+	left: 144px;
+	color: rgba(137,154,184,0.5);
+	cursor: pointer;
+}
+#browser,iframe{
+	width: 259px;
+	height: 363px;
+}
+footer{
+	height: 40px;
+	background: rgba(137,154,184,0.5);
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var web=document.getElementById('http');
+	var goo=document.getElementById('google');
+	var fow=document.getElementById('wz');
+	var bro=document.getElementById('borwser');
+	goo.value='Google';
+	web.value='http://www.baidu.com';
+	//bro.innerHTML='<iframe src=\"'+web.value+'\"></iframe>';
+
+	goo.onclick=function()
+	{
+		goo.value='';
+	}
+
+	web.onclick=function()
+	{
+		web.value='http://';
+	}
+
+	fow.onclick=function()
+	{
+		alert('部分功能正在实现中.../_\\');	
+	}
+}
+</script>
+
+<body>
+<nav>
+	<input id="http"><div id="wz">-></div>
+	<input id="google">
+</nav>
+<iframe src="http://www.baidu.com" id="borwser"></iframe>
+<footer></footer>
+</body>
