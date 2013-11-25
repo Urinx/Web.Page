@@ -1,0 +1,42 @@
+body,div,video,canvas,h1{
+	margin: 0;
+	padding: 0;
+}
+video,canvas{
+	margin: 15px;
+}
+body{
+	background: white;
+	background-size: 100% 100%;
+	font-family: Satisfy,serif;
+	text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #ff00de, 0 0 10px #ff00de;
+}
+h1{
+	text-align: center;
+	color: #e768ad;
+}
+video,canvas{
+	background: gray;
+	display: -none;
+}
+canvas{
+}
+#div1{
+	width: 100px;
+	height: 100px;
+	border: 1px solid red;
+	position: absolute;
+	top: 0;
+	left: 0px;
+}
+#snap{
+	position: absolute;
+	left: 40%;
+	top: 46%;
+	width: 100px;
+	height: 100px;
+	border: 0px solid gray;
+	background: blue;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
