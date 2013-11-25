@@ -1,0 +1,7 @@
+bubble_name:¥Û∫£¿Àª®
+bubble_zoomPoint:(76,40)
+gif_point:(0,40)
+gif_size:(140,50)
+
+pngs:20
+fps:50ms
