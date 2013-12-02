@@ -1,0 +1,48 @@
+<meta charset="utf-8">
+<style type="text/css">
+div,body,ul{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+	display: none;
+	position: absolute;
+}
+li{
+	width: 200px;
+	height: 40px;
+	background: rgba(224,225,227,0.5);
+	border: 2px solid rgba(223,226,227,0.5);
+	color: rgba(60,166,180,0.5);
+	text-align: center;
+	line-height: 40px;
+	font-weight: bolder;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var oUl=document.getElementById('ul1');
+	document.oncontextmenu=function()
+	{
+		oUl.style.display='block';
+		oUl.style.left=event.clientX+'px';
+		oUl.style.top=event.clientY+'px';
+		return false;
+	}
+	document.onclick=function()
+	{
+		oUl.style.display='none';
+	}
+}
+</script>
+
+<ul id="ul1">
+	<li>Copy</li>
+	<li>Cut</li>
+	<li>Paste</li>
+	<li>Resource</li>
+	<li>Elements</li>
+</ul>

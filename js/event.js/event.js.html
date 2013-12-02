@@ -1,0 +1,22 @@
+<script type="text/javascript">
+function $(ele){
+	return document.querySelector(ele);
+}
+</script>
+
+<div id="log"></div>
+<script type="text/javascript">
+var log=$('#log'),out='';
+document.addEventListener('click',logeventinfo,false);
+document.addEventListener('keypress',logeventinfo,false);
+
+function logeventinfo(ev){
+	log.innerHTML='';
+	out='<ul>';
+	for (var i in ev) {
+		if (typeof(ev[i])==='function' || i===i.toUpperCase()) {continue;}
+		out+='<li><span>'+i+'</span>:'+ev[i]+'</li>';
+	}
+	log.innerHTML+=out+'</ul>';
+}
+</script>

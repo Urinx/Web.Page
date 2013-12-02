@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<style type="text/css">
+textarea{
+
+}
+
+div{
+	width: 470px;
+	height: 605px;
+	border: 1px solid gray;
+	float: right;
+}
+</style>
+
+<script type="text/javascript">
+function preview()
+{
+	var str=document.getElementById('code').value;
+	var prepg=document.getElementById('previewpg');
+	prepg.innerHTML=str;
+}
+</script>
+
+<fieldset>
+	<legend>HTML编辑器</legend>
+	<textarea cols="50" rows="40" id="code" onfocus="this.innerHTML='';">请在这里输入代码</textarea>
+	<div id="previewpg"></div>
+	<br>
+	<input type="button" value="Preview" id="preview" onclick="preview()">
+</fieldset>

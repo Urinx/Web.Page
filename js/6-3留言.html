@@ -1,0 +1,74 @@
+<meta charset="utf-8">
+<style type="text/css">
+body,ul,div{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url(res/.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+ul{
+	width: 200px;
+	height: 400px;
+	border: 1px dashed gray;
+	list-style: none;
+	overflow: hidden;
+}
+ul div{
+	width: 200px;
+	height: auto;
+	border-bottom: 1px dashed gray;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+</style>
+<script type="text/javascript" src="moveFrame/move.js"></script>
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+
+window.onload=function(){
+	var Ul=$('ul1');
+	var btn=$('send');
+	var ws=$('words');
+	var Dv=document.getElementsByTagName('div');
+
+	btn.onclick=function(){
+		if (!ws.value) {
+			alert('content cant be blank!');
+		}
+		else{
+			var dv=document.createElement('div');
+			var str=ws.value;
+			dv.innerHTML=ws.value;
+			ws.value='';
+			if (Dv.length){
+				Ul.insertBefore(dv,Dv[0]);
+			}
+			else{
+				Ul.appendChild(dv);
+			};
+
+			var h=dv.offsetHeight;
+			dv.style.height=0;
+			dv.style.opacity=0;
+			Move(dv,{height:h},function(){
+				Move(dv,{opacity:100});
+			});
+		}
+	}
+}
+</script>
+
+<body>
+	<textarea id="words"></textarea>
+	<input id="send" type="button" value="Write">
+	<ul id="ul1">
+	</ul>
+	<audio autoplay controls hidden loop>
+		<source src="res/.mp3" type="audio/mp3">
+		<source src="res/.ogg" type="audio/ogg">
+	</audio>
+</body>

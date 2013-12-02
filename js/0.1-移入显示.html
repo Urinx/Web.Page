@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<style type="text/css">
+#d1{
+	background: orange;
+	width: 200px;
+	height: 200px;
+	display: none;
+}
+
+#d2{
+	background: orange;
+	width: 200px;
+	height: 200px;
+}
+
+.dout{
+	background: orange;
+}
+
+.din{
+	background: red;
+}
+</style>
+
+<label onmouseover="document.getElementById('d1').style.display='block';" onmouseout="document.getElementById('d1').style.display='none';">
+<input type="checkbox">自动登陆
+</label>
+<div id="d1">123124124123</div>
+<div class="dout" onmouseover="this.className='din';" onmouseout="this.className='dout';">换clsas</div>

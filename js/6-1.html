@@ -1,0 +1,39 @@
+<style type="text/css">
+#div1{
+	width: 100px;
+	height: 100px;
+	background: gray;
+	position: absolute;
+	left: 200px;
+	top: 200px;
+	margin: 0;
+}
+#div2{
+	width: 200px;
+	height: 200px;
+	background: red;
+	position: absolute;
+	left: 200px;
+	top: 200px;
+	margin: -50px;
+}
+</style>
+<script type="text/javascript" src="moveFrame/move.js"></script>
+
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+window.onload=function(){
+	var Div=$('div1');
+	Div.onmouseover=function(){
+		Move(Div,{width:200,height:200,margin:-50});
+	}
+	Div.onmouseout=function(){
+		Move(Div,{width:100,height:100,margin:0});
+	}
+}
+</script>
+
+<div id="div2"></div>
+<div id="div1"></div>

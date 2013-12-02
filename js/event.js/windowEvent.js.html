@@ -1,0 +1,13 @@
+<script type="text/javascript">
+window.onload=function(){
+	var log=document.getElementById('log'),
+	i='',
+	out=[];
+	for (i in window) {
+		if (/^on/.test(i)) {out[out.length]=i;}
+	};
+	log.innerHTML=out.join('<br>');
+}
+</script>
+
+<div id="log"></div>

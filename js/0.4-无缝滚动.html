@@ -1,0 +1,118 @@
+<meta charset="utf-8">
+<style type="text/css">
+body,div,section,ul,li{
+	margin: 0;
+	padding: 0;
+}
+div{
+	width: 200px;
+	height: 100px;
+	background: rgba(224,225,227,0.5);
+	border: 2px solid rgba(224,225,226,0.5);
+	color: rgba(82,82,82,0.5);
+	text-align: center;
+	line-height: 100px;
+	font-size: 80px;
+}
+div:hover{
+	width: 210px;
+	height: 110px;
+	background: rgba(236,249,247,0.5);
+}
+section{
+	position: relative;
+	top: 200px;
+	left: 200px;
+	width: 810px;
+	height: 120px;
+	overflow: hidden;
+}
+ul{
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	list-style: none;
+}
+li{
+	float: left;
+	margin-left: 10px;
+}
+#lf,#rt{
+	width: 30px;
+	height: 100px;
+	font-size: 60px;
+	border-radius: 15px;
+	cursor: pointer;
+}
+#lf{
+	position: absolute;
+	top: 210px;
+	left: 165px;
+}
+#rt{
+	position: absolute;
+	top: 210px;
+	left: 1012px;
+}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+	var oul=document.getElementById('gund');
+	var oli=oul.getElementsByTagName('li');
+	var odiv1=document.getElementById('lf');
+	var odiv2=document.getElementById('rt');
+	var speed=-5;
+	var timer=null;
+	oul.innerHTML+=oul.innerHTML;
+	oul.style.width=(oli.length+1)*oli[0].offsetWidth;
+
+	timer=setInterval(gundon,30);
+
+	oul.onmouseover=function()
+	{
+		clearInterval(timer);
+	}
+
+	oul.onmouseout=function()
+	{
+		timer=setInterval(gundon,30);
+	}
+
+	odiv1.onclick=function()
+	{
+		speed=-5;
+	}
+	odiv2.onclick=function()
+	{
+		speed=5;
+	}
+
+
+	function gundon()
+	{
+		oul.style.left=oul.offsetLeft+speed;
+		if(oul.offsetLeft<=-oul.offsetWidth*0.5+60)
+		{
+			oul.style.left=0;
+		}
+		else if(oul.offsetLeft>0)
+		{
+			oul.style.left=-oul.offsetWidth*0.5+60;
+		}
+	}
+}
+
+
+</script>
+
+<div id="lf">&lt;</div>
+<div id="rt">&gt;</div>
+<section>
+<ul id="gund">
+	<li><div>1</div></li>
+	<li><div>2</div></li>
+	<li><div>3</div></li>
+	<li><div>4</div></li>
+</ul>
+</section>

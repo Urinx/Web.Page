@@ -1,0 +1,37 @@
+<style type="text/css">
+div{
+	width: 10px;
+	height: 10px;
+	background: gray;
+	position: absolute;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var oBa=document.getElementsByTagName('body')[0];
+	for (var i = 0; i < 50; i++) {
+		oBa.innerHTML+='<div></div>';
+	};
+	var oDi=document.getElementsByTagName('div');
+
+
+	document.onmousemove=function()
+	{
+		for (var i = oDi.length-1; i > 0; i--) {
+			oDi[i].style.left=oDi[i-1].style.left;
+			oDi[i].style.top=oDi[i-1].style.top;
+		};
+
+		oDi[0].style.left=event.clientX+'px';
+		oDi[0].style.top=event.clientY+'px';
+
+	}
+
+}
+
+</script>
+
+<body>
+</body>

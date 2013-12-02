@@ -1,0 +1,27 @@
+<ul id="resources">
+  <li><a href="http://developer.mozilla.org">MDN</a></li>
+  <li><a href="http://html5doctor.com">HTML5 Doctor</a></li>
+  <li><a href="http://html5rocks.com">HTML5 Rocks</a></li>
+  <li><a href="http://beta.theexpressiveweb.com/">Expressive Web</a></li>
+  <li><a href="http://creativeJS.com/">CreativeJS</a></li>
+</ul>
+<h1 id="log"></h1>
+
+<script type="text/javascript">
+var resources=document.querySelector('#resources');
+var log=document.querySelector('#log');
+resources.addEventListener('mouseover',showtarget,false);
+
+function showtarget(ev){
+	var target=ev.target;
+	if (target.tagName==='A') {
+		log.innerHTML='A link,with the href:'+target.href;
+	}
+	if (target.tagName==='LI') {
+		log.innerHTML='A list item';
+	}
+	if (target.tagName==='UL') {
+		log.innerHTML='The list itself';
+	};
+}
+</script>

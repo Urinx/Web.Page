@@ -1,0 +1,33 @@
+<div class="plot"></div>
+<input type="checkbox">
+<style type="text/css">
+.plot{
+	position:absolute;
+	background:rgb(175,50,50);
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	display: block;
+	top:0;
+	left:0;
+}
+.smooth {
+  -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+       -o-transition: 0.5s;
+          transition: 0.5s;
+}
+</style>
+<script type="text/javascript">
+var plot=document.querySelector('.plot'),offset=plot.offsetWidth/2;
+document.addEventListener('click',function (ev) {
+	plot.style.left=(ev.pageX-offset)+'px';
+	plot.style.top=(ev.pageY-offset)+'px';
+},false);
+
+var cb=document.querySelector('input[type=checkbox]');
+cb.addEventListener('click',function(ev){
+	plot.classList.toggle('smooth');
+},false)
+</script>

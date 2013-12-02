@@ -1,0 +1,32 @@
+<script type="text/javascript">
+function $(id){
+    return document.getElementById(id);
+}
+function getHeight() {
+    alert($("hidden").offsetHeight + "px");
+    alert($("hidden").offsetWidth + "px");
+    $("pinglun").style.height=$("hidden").offsetHeight + "px";
+}
+window.onload = function() {
+    getHeight();
+}
+</script>
+<style>
+#hidden {
+    width:100px;
+    background:#99CC00;
+    height:400px;
+    float:left;
+}
+#pinglun {
+    width:500px;
+    height:auto;
+    background:#FFCCCC;
+    float:left;
+    margin-left:5px;
+}
+</style>
+<body>
+<div id="hidden">hidden</div>
+<div id="pinglun">loading......</div>
+</body>

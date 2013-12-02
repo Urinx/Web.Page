@@ -1,0 +1,66 @@
+<meta charset="utf-8">
+<style type="text/css">
+div{
+	width: 100px;
+	height: 100px;
+	background: red;
+	margin: 10px;
+}
+</style>
+<script type="text/javascript">
+function $(id){
+    return document.getElementById(id);
+}
+
+function getStyle(obj,attr){
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	}
+	else{
+		return getComputedStyle(obj,false)[attr];
+	};
+}
+
+var timer=null;
+function Move(obj,attr,lenth){
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		var vi=parseInt(getStyle(obj,attr));
+		var speed=(lenth-vi)/10;
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		if (vi==lenth) {
+			clearInterval(obj.timer);
+		}
+		else{
+			obj.style[attr]=vi+speed+'px';
+		};
+	},50);
+}
+
+window.onload=function(){
+	/*var Div1=$('div1');
+	
+	Div1.onmouseover=function(){
+		Move(this,'width',300);
+	}
+	Div1.onmouseout=function(){
+		Move(this,'width',100);
+	}*/
+
+	var Div=document.getElementsByTagName('div');
+	for (var i = 0; i < Div.length; i++) {
+		Div[i].onmouseover=function(){
+			Move(this,'width',500);
+		}
+		Div[i].onmouseout=function(){
+			Move(this,'width',100);
+		}
+	};
+}
+</script>
+
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+</body>

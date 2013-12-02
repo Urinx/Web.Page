@@ -1,0 +1,68 @@
+<style type="text/css">
+ul,li,div{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+	width: 600px;
+	margin: 0 auto;
+	position: relative;
+	top: 200px;
+}
+li{
+	width: 100px;
+	height: 20px;
+	background: gray;
+	margin: 5px;
+	float: left;
+}
+#div1{
+	width: 100px;
+	height: 20px;
+	border-bottom: 5px solid red;
+	position: relative;
+}
+</style>
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+
+var timer=null;
+var speed=0;
+function move(pos){
+	var Li=document.getElementsByTagName('li');
+	var dv=$('div1');
+
+	clearInterval(timer);
+	timer=setInterval(function(){
+		speed+=(pos-dv.offsetLeft)/50;
+		speed*=0.95;
+		dv.style.left=dv.offsetLeft+speed+'px';
+	},30);
+	
+}
+
+window.onload=function(){
+	var Li=document.getElementsByTagName('li');
+	var dv=$('div1');
+	dv.style.top=(Li[0].offsetTop-1)+'px';
+	dv.style.left=(Li[0].offsetLeft-1)+'px';
+
+	for (var i = 0; i < Li.length; i++) {
+		Li[i].onmouseover=function(){
+			move(this.offsetLeft);
+		}
+	};
+}
+</script>
+
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<div id="div1"></div>
+</ul>

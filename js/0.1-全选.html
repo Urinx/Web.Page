@@ -1,0 +1,49 @@
+<meta charset="utf-8">
+
+<style type="text/css">
+
+p,input{
+	margin: 0px;
+	padding: 0px;
+}
+
+p{
+	border: 2px solid gray;
+	color: green;
+	width: 100px;
+}
+
+ul{
+	list-style-type: none;
+}
+
+</style>
+
+<script type="text/javascript">
+
+window.onload=function ()
+{
+	var b1=document.getElementById('p1');
+	var b2=document.getElementsByTagName('input');
+	b1.onclick=allselect;
+}
+
+function allselect()
+	{
+		var b1=document.getElementById('p1');
+		var b2=document.getElementsByTagName('input');
+		for (var i = 1; i < b2.length; i++) {
+			b2[i].checked='checked';
+
+		};
+	}
+</script>
+
+<input id="p1" value="12" type="button">All Select
+<ul>
+<li><input type="checkbox">1</li>
+<li><input type="checkbox">2</li>
+<li><input type="checkbox">3</li>
+<li><input type="checkbox">4</li>
+<li><input type="checkbox">5</li>
+</ul>

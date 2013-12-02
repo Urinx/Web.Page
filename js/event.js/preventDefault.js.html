@@ -1,0 +1,14 @@
+<a class="prevent" href="https://github.com/urinx">Urinx .prevent</a>
+<a class="normal" href="https://github.com/urinx">Urinx .normal</a>
+
+<script type="text/javascript">
+var prevent=document.querySelector('.prevent');
+var normal=document.querySelector('.normal');
+prevent.addEventListener('click',function(ev){
+	alert('fabulous,really!');
+	ev.preventDefault();
+},false);
+normal.addEventListener('click',function(ev){
+	alert('fabulous,really!');
+},false);
+</script>

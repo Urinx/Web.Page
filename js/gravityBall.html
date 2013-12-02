@@ -1,0 +1,77 @@
+<style type="text/css">
+div,body{
+	margin: 0;
+	padding: 0;
+}
+.circle{
+	width: 100px;
+	height: 100px;
+	border: 2px solid gray;
+	border-radius: 100px;
+	position: absolute;
+	top: 60px;
+}
+.circle:hover{
+	cursor: pointer;
+	border-color: rgba(24,225,227,0.5);
+}
+#deadline{
+	position: absolute;
+	top: 656px;
+	width: 100%;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function()
+{
+	var oCir=document.getElementById('cir');
+	var timer=null;
+	var a=0;
+	oCir.onmousedown=function()
+	{
+		clearInterval(timer);
+		oCir.onmousemove=function()
+			{
+				this.style.top=event.clientY-50+'px';
+				this.style.left=event.clientX-50+'px';
+			}
+	}
+	oCir.onmouseup=function()
+	{
+		oCir.onmousemove=function(){};
+		a=1;
+		fall();
+	}
+	oCir.onmouseout=function()
+	{
+		oCir.onmousemove=function(){};
+		if (a==0) {
+			fall();
+		};
+	}
+
+	function fall()
+	{
+		clearInterval(timer);
+		var oCir=document.getElementById('cir');
+		var t=0;
+		timer=setInterval(function(){
+				if (oCir.offsetTop<560) {
+					oCir.style.top=oCir.offsetTop+t*t/10+'px';
+					//oCir.style.left=oCir.offsetLeft+t*t/50+'px';
+					t++;
+					if (oCir.offsetTop>=560){
+						oCir.style.top='560px';
+						a=0;
+					}
+				};
+			},100);
+	}
+}
+
+
+</script>
+
+<div id="cir" class="circle"></div>
+<hr id="deadline">

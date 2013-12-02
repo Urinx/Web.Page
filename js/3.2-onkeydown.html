@@ -1,0 +1,126 @@
+<meta charset="utf-8">
+<style type="text/css">
+div,body{
+	margin: 0;
+	padding: 0;
+}
+#div1{
+	width: 100px;
+	height: 100px;
+	background: rgba(224,225,227,0.5);
+	border: 2px solid gray;
+	position: absolute;
+	top: 400px;
+	left: 400px;
+}
+#div2{
+	width: 20px;
+	height: 20px;
+	background: rgba(224,225,227,0.5);
+	border: 2px solid gray;
+	position: absolute;
+	top: 38px;
+	left: 38px;
+}
+</style>
+
+<script type="text/javascript">
+var speed=20;//方块速度
+var bspeed=10;//子弹速度
+var direc=2;//方向
+document.onkeydown=function(ev)
+{
+	var eve=ev || event;
+	var oDiv=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+
+	//alert(eve.keyCode);
+	switch(eve.keyCode)
+	{
+		case 37:
+			oDiv.style.left=oDiv.offsetLeft-speed+'px';
+			direc=1;
+			break;
+		case 38:
+			oDiv.style.top=oDiv.offsetTop-speed+'px';
+			direc=2;
+			break;
+		case 39:
+			oDiv.style.left=oDiv.offsetLeft+speed+'px';
+			direc=3;
+			break;
+		case 40:
+			oDiv.style.top=oDiv.offsetTop+speed+'px';
+			direc=4;
+			break;
+		case 13:
+		if (direc==1) {
+			var pre=oDiv2.offsetLeft;
+			timer=setInterval(function(){
+				oDiv2.style.left=oDiv2.offsetLeft-bspeed+'px';
+				if (oDiv2.offsetLeft<=-oDiv.offsetLeft) {
+					oDiv2.style.display='none';
+					oDiv2.style.left=pre+'px';
+					setTimeout(function(){
+						oDiv2.style.display='block';
+					},1000);
+					clearInterval(timer);
+				};
+			},50);
+		};
+		if (direc==2) {
+			var pre=oDiv2.offsetTop;
+			var yshift=oDiv.offsetTop;
+			timer=setInterval(function(){
+				oDiv2.style.top=oDiv2.offsetTop-bspeed+'px';
+				if (oDiv2.offsetTop<=-yshift) {
+					oDiv2.style.display='none';
+					oDiv2.style.top=pre+'px';
+					setTimeout(function(){
+						oDiv2.style.display='block';
+					},1000);
+					clearInterval(timer);
+				};
+			},50);
+		};
+		if (direc==3) {
+			var pre=oDiv2.offsetLeft;
+			timer=setInterval(function(){
+				oDiv2.style.left=oDiv2.offsetLeft+bspeed+'px';
+				if (oDiv2.offsetLeft>=document.body.clientWidth-oDiv.offsetLeft-oDiv.offsetWidth+pre+oDiv2.offsetWidth) {
+					oDiv2.style.display='none';
+					oDiv2.style.left=pre+'px';
+					setTimeout(function(){
+						oDiv2.style.display='block';
+					},1000);
+					clearInterval(timer);
+				};
+			},50);
+		};
+		if (direc==4) {
+			var pre=oDiv2.offsetTop;
+			timer=setInterval(function(){
+				oDiv2.style.top=oDiv2.offsetTop+bspeed+'px';
+				if (oDiv2.offsetTop>=document.body.clientHeight-oDiv.offsetTop-oDiv.offsetWidth+pre+oDiv2.offsetWidth) {
+					oDiv2.style.display='none';
+					oDiv2.style.top=pre+'px';
+					setTimeout(function(){
+						oDiv2.style.display='block';
+					},1000);
+					clearInterval(timer);
+				};
+			},50);
+		};
+		break;
+		//alert(oDiv2.offsetLeft);
+		default:break;
+	}
+}
+//-25
+</script>
+
+<body>
+<div id="div1">
+	<div id="div2"></div>
+</div>
+</body>

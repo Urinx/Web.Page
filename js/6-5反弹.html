@@ -1,0 +1,47 @@
+<style type="text/css">
+#div1{
+	width: 100px;
+	height: 100px;
+	background: gray;
+	position: absolute;
+}
+</style>
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+
+window.onload=function(){
+	var dv=$('div1');
+	move(dv);
+}
+
+var speedx=5;
+var speedy=5;
+var timer=null;
+function move(obj){
+	clearInterval(timer);
+	timer=setInterval(function(){
+		pox=obj.offsetLeft+speedx;
+		poy=obj.offsetTop+speedy;
+		if (poy>document.documentElement.clientHeight-obj.offsetHeight) {
+			speedy*=-1;
+			poy=document.documentElement.clientHeight-obj.offsetHeight;
+		}
+		else if (poy<0) {
+			speedy*=-1;
+		};
+		if (pox>document.documentElement.clientWidth-obj.offsetWidth) {
+			speedx*=-1;
+			pox=document.documentElement.clientWidth-obj.offsetWidth;
+		}
+		else if (pox<0) {
+			speedx*=-1;
+		};
+		
+		obj.style.left=pox+'px';
+		obj.style.top=poy+'px';
+	},30);
+}
+</script>
+<div id="div1"></div>

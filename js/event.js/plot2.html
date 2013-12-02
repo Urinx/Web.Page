@@ -1,0 +1,72 @@
+<div class="plot smooth"></div>
+<output></output>
+<style type="text/css">
+.plot{
+	position:absolute;
+	background:rgb(175,50,50);
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	display: block;
+	top:0;
+	left:0;
+}
+.smooth {
+  -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+       -o-transition: 0.5s;
+          transition: 0.5s;
+}
+</style>
+<script type="text/javascript">
+var plot = document.querySelector('.plot'),
+    log = document.querySelector('output'),
+    offset = plot.offsetWidth / 2,
+    pressed = false,
+    start = 0, x = 0, y = 0, end = 0, ex = 0, ey = 0, mx = 0, my = 0, 
+    duration = 0, dist = 0, angle = 0;
+ 
+document.addEventListener('mousedown', onmousedown, false);
+document.addEventListener('mouseup', onmouseup, false);
+document.addEventListener('mousemove', onmousemove, false);
+ 
+function onmousedown(ev) {
+  if (start === 0 && x === 0 && y === 0) {
+    start = ev.timeStamp;
+    x = ev.clientX;
+    y = ev.clientY;
+    moveplot(x, y);
+    pressed = true;
+  }
+}
+function onmouseup(ev) {
+  end = ev.timeStamp;
+  duration = end - start;
+  ex = ev.clientX;
+  ey = ev.clientY;
+  mx = ex - x;
+  my = ey - y;
+  dist = Math.sqrt(mx * mx + my * my);
+  start = x = y = 0;
+  pressed = false;
+  angle = Math.atan2( my, mx ) * 180 / Math.PI;
+  log.innerHTML = '<strong>' + (dist>>0) +'</strong> pixels in <strong>'+
+                  duration +'</strong> ms ( <strong>' +
+                  twofloat(dist/duration) +'</strong> pixels/ms)'+
+                  ' at <strong>' + twofloat(angle) +
+                  '</strong> degrees';
+}
+function onmousemove (ev) {
+  if (pressed) {
+    moveplot(ev.pageX, ev.pageY);
+  }
+}
+function twofloat(val) {
+  return Math.round((val*100))/100;
+}
+function moveplot(x, y) {
+  plot.style.left = (x - offset) + 'px';
+  plot.style.top = (y - offset) + 'px';
+}
+</script>

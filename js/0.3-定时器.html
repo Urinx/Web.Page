@@ -1,0 +1,55 @@
+<meta charset="utf-8">
+<style type="text/css">
+div{
+	margin: 0;
+	border-spacing: 0;
+	width: 100px;
+	height: 100px;
+	border-radius: 10px;
+	background: rgba(148,207,219,0.5);
+	box-shadow: 2px 2px 5px rgba(148,207,219,0.5);
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 100px;
+	text-align: center;
+	color: rgba(214,133,133,1);
+	text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
+}
+section{
+	position: relative;
+	top: 40%;
+	left: 40%;
+}
+input{
+	border: transparent;
+	background: none;
+	font-size: 20px;
+}
+</style>
+
+<script type="text/javascript">
+var n=0;
+var timer=null;
+function count()
+{
+	var odv=document.getElementById('div1');
+	n+=1;
+	odv.innerHTML=n+'s';
+}
+timer=setInterval(count,1000);
+
+function stop()
+{
+	clearInterval(timer);
+}
+function resume()
+{
+	setInterval(count,1000);
+}
+</script>
+<section>
+	<h1>计时器</h1>
+	<div id="div1"></div>
+	<input type="button" value="resume" onclick="resume()">
+	<input type="button" value="stop" onclick="stop()">
+</section>

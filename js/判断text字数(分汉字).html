@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<script>
+function checkstr(digit){      //定义checkstr函数实现对用户名长度的限制
+   var n=0;          //定义变量n,初始值为0
+   var str=document.getElementById('Title').value;
+   for(i=0;i<str.length;i++){     //应用for循环语句,获取表单提交用户名字符串的长度
+     var leg=str.charCodeAt(i);     //获取字符的ASCII码值
+     if(leg>255){        //判断如果长度大于255
+    n+=2;           //则表示是汉字为2个字节
+     }else {
+    n+=1;           //否则表示是英文字符,为1个字节
+     }
+   }
+   if (n>digit){         //判断用户名的总长度如果超过20个字节,则返回true
+     alert('字数超了');
+   }else {
+     document.getElementById('num').innerHTML=n;        //如果用户名的总长度不超过20个字节,则返回false
+   }
+}
+</script>
+
+<input name="Title" type="text" id="Title" size="45" onkeyup="checkstr(26)"/> 字数:<span id="num">0</span>

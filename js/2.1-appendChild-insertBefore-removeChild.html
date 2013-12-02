@@ -1,0 +1,62 @@
+<meta charset="utf-8">
+<style type="text/css">
+li{
+	width: 300px;
+	height: 100px;
+	background: rgba(224,225,227,0.5);
+	border: 2px solid rgba(224,225,227,0.5);
+	text-align: center;
+	line-height: 100px;
+	font-size: 50px;
+}
+#ul1{
+	list-style: none;
+}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+	var oul=document.getElementById('ul1');
+	var ob1=document.getElementById('btn1');
+	var ob2=document.getElementById('btn2');
+	var oadd=document.getElementById('add');
+	var odel=document.getElementById('del');
+	var otx=document.getElementById('txt');
+	var ali=oul.getElementsByTagName('li');
+	var a=oul.innerHTML;
+
+	ob1.onclick=function()
+	{
+		var oli=document.createElement('li');
+		oli.innerHTML=otx.value;
+		oul.appendChild(oli);
+	}
+
+	ob2.onclick=function()
+	{
+		var oli=document.createElement('li');
+		oli.innerHTML=otx.value;
+		oul.insertBefore(oli,ali[0]);
+	}
+
+	oadd.onclick=function()
+	{
+		oul.innerHTML+=a;
+		oul.lastElementChild.innerHTML=otx.value;
+	}
+
+	odel.onclick=function()
+	{
+		oul.removeChild(oul.lastElementChild);
+	}
+}
+</script>
+
+<ul id="ul1">
+	<li></li>
+</ul>
+<input type="text" id="txt">
+<input type="button" id="btn1" value="appendChild">
+<input type="button" id="btn2" value="insertBefore">
+<input type="button" id="add" value="innerHTML">
+<input type="button" id="del" value="removeChild">

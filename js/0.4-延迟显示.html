@@ -1,0 +1,49 @@
+<meta charset="utf-8">
+<style type="text/css">
+body,div{
+	margin: 0px;
+	padding: 0px;
+}
+#div1,#div2{
+	width: 200px;
+	height: 100px;
+	background: rgba(224,225,227,0.5);
+	border: 2px solid rgba(224,225,226,0.5);
+}
+#div1{
+	position: relative;
+	top: 300px;
+	left: 200px;
+	color: rgba(82,82,82,0.5);
+	text-align: center;
+}
+#div2{
+	position: relative;
+	top: 196px;
+	left: 420px;
+	display: none;
+}
+</style>
+<script type="text/javascript">
+window.onload=function()
+{
+	var oDiv1=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var timer=null;
+
+	oDiv1.onmouseover=oDiv2.onmouseover=function(){
+		clearTimeout(timer);
+		timer=setTimeout(function(){
+			oDiv2.style.display='block';},200);
+	};
+
+	oDiv1.onmouseout=oDiv2.onmouseout=function(){
+		clearTimeout(timer);
+		timer=setTimeout(function(){
+			oDiv2.style.display='none';},200);
+	};
+}
+</script>
+
+<div id="div1">右边的方块延迟0.2s显示，并且当鼠标移到上面时不消失</div>
+<div id="div2"></div>
