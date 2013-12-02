@@ -1,0 +1,199 @@
+<script type="text/javascript">
+/*
+1.
+foo=function(){alert(arguments[0])};
+foo('hello world');
+*/
+
+/*
+2.
+foo=function(f){f?f('hello'):false;};
+bar=function(str){alert(str)};
+foo(bar);
+*/
+
+/*
+3.
+foo=function(str){alert('foo:'+str)};
+foo.bar=function(str){alert('foo.bar:'+str)};
+foo.bar('1');
+*/
+
+/*
+4.
+var json={'a':1,'b':2};
+alert(json.a) || alert(json['b']);
+
+bar=function(){alert('bar')};
+baz=function(){alert('baz')};
+var foo={bar:bar(),baz:baz()};
+foo.bar;//echo bar,baz
+foo[baz];//echo bar,baz
+foo;//echo bar,baz
+
+//This is wrong!!
+var foo={bar:function(){alert('hello')}};
+foo.bar;
+
+//As the same:
+bar=function(){alert('bar')};
+foo=[function(){alert('bar')},bar()];
+foo[0];
+*/
+
+/*
+5.
+(function() {  
+    alert('hello');
+})();
+
+(function(str){alert(str)}('hello'));
+
++function(str){alert(str)}('hello');
+*/
+
+/*
+6.
+function Counter(start) {
+    var count = start;
+    return {
+        increment: function() {
+            count++;
+        },
+
+        get: function() {
+            return count;
+        }
+    }
+}
+
+var foo = Counter(4);
+foo.increment();
+alert(foo.get()); // 5
+*/
+
+/*
+7.
+// 全局作用域
+var foo = 42;
+function test() {
+    // 局部作用域
+    foo = 21;
+}
+test();
+alert(foo); // 21
+
+var foo = 1;
+function test() {
+    var foo = 2;
+    eval('foo = 3');
+    return foo;
+}
+alert(test()); // 3
+alert(foo); // 1
+
+var foo = 1;
+function test() {
+    var foo = 2;
+    var bar = eval;
+    bar('foo = 3');
+    return foo;
+}
+alert(test()); // 2
+alert(foo); // 3
+
+// 写法一：直接调用全局作用域下的 foo 变量
+var foo = 1;
+function test() {
+    var foo = 2;
+    window.foo = 3;
+    return foo;
+}
+alert(test()); // 2
+alert(foo); // 3
+
+// 写法二：使用 call 函数修改 eval 执行的上下文为全局作用域
+var foo = 1;
+function test() {
+    var foo = 2;
+    eval.call(window, 'foo = 3');
+    return foo;
+}
+alert(test()); // 2
+alert(foo); // 3
+*/
+
+/*
+8.
+//This is wrong!!!
+//在foo被阻塞的时候，setInterval仍然在组织将来对回调函数的调用。
+function foo(){
+    // 阻塞执行5秒
+    setTimeout(function(){alert('5')},5000);
+};
+setInterval(foo, 1000);
+
+//This is right!!!
+function foo(){
+    // 阻塞执行 1 秒
+    alert('1');
+    setTimeout(foo,1000);
+}
+foo();
+
+// Don't do this!!! It's callbak eval() and only executed once.
+setTimeout("alert('hello')",1000);
+*/
+
+/*
+9.
+function $(s){return document.querySelector(s);};
+$('.class').fontcolor('#C0C0C0');
+*/
+
+/*
+10.
+alert(escape(' ?!=()#%&'));
+*/
+
+/*
+11.
+var foo=[1,2,3,4,5,6];
+foo.length=3;
+alert(foo);
+*/
+
+/*
+12.
+""           ==   "0"           // false
+0            ==   ""            // true
+0            ==   "0"           // true
+false        ==   "false"       // false
+false        ==   "0"           // true
+false        ==   undefined     // false
+false        ==   null          // false
+null         ==   undefined     // true
+" \t\r\n"    ==   0             // true
+*/
+
+/*
+13.
+Value               Class      Type
+-------------------------------------
+"foo"               String     string
+new String("foo")   String     object
+1.2                 Number     number
+new Number(1.2)     Number     object
+true                Boolean    boolean
+new Boolean(true)   Boolean    object
+new Date()          Date       object
+new Error()         Error      object
+[1,2,3]             Array      object
+new Array(1, 2, 3)  Array      object
+new Function("")    Function   function
+/abc/g              RegExp     object (function in Nitro/V8)
+new RegExp("meow")  RegExp     object (function in Nitro/V8)
+{}                  Object     object
+new Object()        Object     object
+*/
+</script>
