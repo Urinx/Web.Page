@@ -1,0 +1,63 @@
+<style type="text/css">
+body{
+	background: black;
+}
+canvas{
+	background: white;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function(){
+	var canvas=document.getElementById('canvas');
+	var can=canvas.getContext('2d');
+	/*
+	//insert image
+	var img=new Image();
+	img.src='bg.jpg';
+	img.onload=function(){
+		puton(this);
+	}
+	function puton(obj){
+		can.drawImage(obj,0,0);//method 1;
+		// var bg=can.createPattern(obj,'repeat');
+		// can.fillStyle=bg;
+		// can.fillRect(0,0,600,400);//method 2;
+	}
+	*/
+
+	/*
+	//渐变
+	var jb=can.createLinearGradient(10,10,110,110);
+	jb.addColorStop(0,'red');
+	jb.addColorStop(0.5,'yellow');
+	jb.addColorStop(1,'blue');
+	can.fillStyle=jb;
+	can.fillRect(10,10,100,100);
+
+	var jb2=can.createRadialGradient(300,200,100,300,200,200);
+	jb2.addColorStop(0,'red');
+	jb2.addColorStop(0.5,'yellow');
+	jb2.addColorStop(1,'blue');
+	can.fillStyle=jb2;
+	can.fillRect(0,0,600,400);
+	*/
+
+	//文本
+	can.font='40px impact';
+	can.textBaseline='top';//middle bottom;
+	can.fillText('lalala',0,0);
+	can.strokeText('lalala',0,100);
+	//居中
+	var w=can.measureText('lalala').width;
+	can.fillText('lalala',(canvas.width-w)/2,200);
+	//阴影
+	can.shadowOffsetX=5;
+	can.shadowOffsetY=5;
+	can.shadowColor='gray';
+	can.shadowBlur=5;
+	can.fillText('lalala',100,300);
+}
+</script>
+
+<canvas id="canvas" width="600" height="400"></canvas>

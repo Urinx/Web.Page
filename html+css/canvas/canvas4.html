@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<style type="text/css">
+body{
+	background: black;
+}
+canvas{
+	background: white;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function(){
+	var canvas=document.getElementsByTagName('canvas')[0];
+	var can=canvas.getContext('2d');
+
+	var x=400;
+	var y=250;
+	var r=200;
+
+	setInterval(function(){
+		var d=new Date();
+		var s=d.getSeconds();
+		var m=d.getMinutes();
+		var h=d.getHours();
+
+		can.clearRect(0,0,800,500);
+
+		can.lineWidth=2;
+		for (var i = 0; i < 60; i++) {
+			can.moveTo(x,y);
+			can.arc(x,y,r,i*Math.PI/30,(i+1)*Math.PI/30,false);
+		};
+		can.stroke();
+
+		can.fillStyle='white';
+		can.beginPath();
+		can.moveTo(x,y);
+		can.arc(x,y,r*19/20,0,2*Math.PI,false);
+		can.closePath();
+		can.fill();
+
+		can.lineWidth=3;
+		can.beginPath();
+		for (var i = 0; i < 12; i++) {
+			can.moveTo(x,y);
+			can.arc(x,y,r,i*Math.PI/6,(i+1)*Math.PI/6,false);
+		};
+		can.closePath();
+		can.stroke();
+
+		can.beginPath();
+		can.moveTo(x,y);
+		can.arc(x,y,r*18/20,0,2*Math.PI,false);
+		can.closePath();
+		can.fill();
+
+		can.lineWidth=1;
+		can.beginPath();
+		can.moveTo(x,y);
+		can.arc(x,y,r*17/20,(s-15)*Math.PI/30,(s-15)*Math.PI/30,false);
+		can.closePath();
+		can.stroke();
+
+		can.lineWidth=3;
+		can.beginPath();
+		can.moveTo(x,y);
+		can.arc(x,y,r*15/20,(m+s/60-15)*Math.PI/30,(m+s/60-15)*Math.PI/30,false);
+		can.closePath();
+		can.stroke();
+
+		can.lineWidth=5;
+		can.beginPath();
+		can.moveTo(x,y);
+		can.arc(x,y,r*11/20,(h+m/60-3)*Math.PI/6,(h+m/60-3)*Math.PI/6,false);
+		can.closePath();
+		can.stroke();
+	},500);
+}
+</script>
+
+<canvas width="800" height="500">
+	(●'◡'●)嘻嘻，你的浏览器不支持我哦
+</canvas>

@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<style type="text/css">
+#heart{
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	height: 400px;
+	width: 400px;
+}
+
+.up{
+	height: 0px;
+	width: 0px;
+	border: 100px solid red;
+	border-color: transparent transparent red transparent;
+}
+
+#right{
+	float: right;
+}
+
+.bottom{
+	height: 0px;
+	width: 0px;
+	border: 200px solid red;
+	border-color: red transparent transparent transparent;
+}
+
+#heart:hover{
+	/*-webkit-transform:rotate(45deg);*/
+	-webkit-transform:scale(0.5);
+}
+</style>
+
+<div id="heart">
+	<div class="up" id="right"></div>
+	<div class="up"></div>
+	<div class="bottom"></div>
+</div>

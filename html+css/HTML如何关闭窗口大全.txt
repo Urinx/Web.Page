@@ -1,0 +1,349 @@
+window.close关闭窗口，不弹出系统提示，直接关闭
+
+===================================================
+
+当我们用这种方法:Response.Write("<script>window.close()</script>")
+
+总是提示什么:你查看的网页试图关闭的提示
+
+如何去掉提示，直接关闭窗体?
+
+可以用以下方法:
+
+Response.Write("<script>window.opener=null;window.close()</script>")
+
+只有ie6才支持.
+
+opener只要设为任何值都可以,不会出现提示
+
+如果是通过子窗体关闭父窗体时怎么做呢
+
+子窗体（弹出窗体）：
+
+同理可得：
+
+Response.Write("<script>window.opener.top.opener=null;window.opener.top.close()</script>")
+
+============================================================
+
+最简单的无提示关闭窗口代码(直接复制便可用):
+
+<input type="button" onClick="window.opener = 'xxx';window.close();"
+
+value="IE6最简单的无提示关闭窗口" >
+
+==============================================================
+
+关闭窗口有提示:
+
+<input type="button" onClick="javascript:window.close();" value="关闭">
+
+<a href="javascript:window.close();">关闭</a>
+
+==============================================================
+
+自动关闭窗口代码:
+
+<script language="javascript">
+
+<!--
+
+function clock(){i=i-1
+
+document.title="本窗口将在"+i+"秒后自动关闭!"
+
+if(i>0)setTimeout("clock();",1000);
+
+else self.close();}
+
+var i=20
+
+clock();
+
+//-->
+
+</script>
+
+在网页源代码中加入下面的代码，则该窗口将在20秒钟之后自动关闭！这与跳出式小窗口配合使用是再好不过啦！代码中“i=20”表示关闭的延迟时间为20秒，可任意修改。
+
+==================================================================
+
+无提示操作,自动关闭窗口
+
+<script>setTimeout("window.opener = 'xxx';window.close();;",1000);</script>
+
+==================================================================
+
+怎么隐藏IE的菜单栏,工具栏和地址栏:
+
+<script language="JavaScript">
+
+<!--
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+
+   window.open(theURL,winName,features);
+
+}
+
+//-->
+
+</script>
+
+<a href="javascript:;" onClick="MM_openBrWindow('s.html','yy','width=300,height=300')">连接该页的地址</a>
+
+===================================================================
+
+设置本窗口大小且定时自动无提示关闭:
+
+<BODY onload="top.resizeTo(300,300);">
+
+<div align=center>成功插入数据!<br><br>
+
+</div>
+
+<script>setTimeout("window.opener = 'xxx';window.close();;",2000);</script>
+
+</BODY>
+
+====================================================================
+
+点击连接弹出一特定(隐藏IE的菜单栏,工具栏和地址栏)窗口:
+
+<A HREF="s.html" onClick="javascript:window.open(this.href,'_blank','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,top=0,left=0,width=790,height=545');return false">新建窗口</a>
+
+=====================================================================
+
+详细介绍设置窗口大小，IE的菜单栏,工具栏和地址栏：
+
+设置窗口大小可以用resizeTo(),resizeBy()函数 把这段代码加到你网页源代码的<head></head>之间。
+
+〈script language=javascript〉resizeTo(x,y)〈/script〉或者把其中的resizeBy()
+
+x,y是你想要的窗口的长宽，dx,dy是你想要窗口长宽增加的值。（dx,dy）是负数的时候就缩小了。
+
+隐藏工具栏，菜单栏的话必须打开新窗口才行（下面的代码对IE而言，不同浏览器可能格式有所区别，open后面不要回车换行！）
+
+window.open("url","window_name","menubarbar=no,toolbar=no"></script〉
+
+〈script> url是你要在新窗口中显示的网页的地址，window_name是窗口的名字，做链接的时候可能用到，不用的话可以用""代替,menubarbar（菜单栏） toolbar （工具栏）locationbar（地址栏） status（状态栏） personalbar resizabla(是否允许调整大小) fullsreen（是否全屏）这些参数你可以按照同样的格式使用
+
+代码如果运行出错，就检查一下是否有多余的空格，还有那个“〈”“〉”，有一次我直接粘贴网页上的代码就好出过“〈”“〉”问题。
+
+window.showModalDialog以及window.open用法简介
+
+一、window.open()支持环境： JavaScript1.0+/JScript1.0+/Nav2+/IE3+/Opera3+
+
+二、基本语法：
+
+window.open(pageURL,name,parameters)
+
+其中：
+
+pageURL 为子窗口路径
+
+name 为子窗口句柄
+
+parameters 为窗口参数(各参数用逗号分隔)
+
+三、示例：
+
+<SCRIPT>
+
+<!--
+
+window.open
+
+('page.html','newwindow','height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollba
+
+rs=no, resizable=no,location=no, status=no')
+
+//写成一行
+
+-->
+
+</SCRIPT>
+
+脚本运行后，page.html将在新窗体newwindow中打开，宽为100，高为400，距屏顶0
+
+象素，屏左0象素，无工具条，无菜单条，无滚动条，不可调整大小，无地址栏，
+
+无状态栏。
+
+请对照。
+
+上例中涉及的为常用的几个参数，除此以外还有很多其他参数，请见四。
+
+四、各项参数
+
+其中yes/no也可使用1/0；pixel value为具体的数值，单位象素。
+
+参数 | 取值范围 | 说明
+
+| |
+
+alwaysLowered | yes/no | 指定窗口隐藏在所有窗口之后
+
+alwaysRaised | yes/no | 指定窗口悬浮在所有窗口之上
+
+depended | yes/no | 是否和父窗口同时关闭
+
+directories | yes/no | Nav2和3的目录栏是否可见
+
+height | pixel value | 窗口高度
+
+hotkeys | yes/no | 在没菜单栏的窗口中设安全退出热键
+
+innerHeight | pixel value | 窗口中文档的像素高度
+
+innerWidth | pixel value | 窗口中文档的像素宽度
+
+location | yes/no | 位置栏是否可见
+
+menubar | yes/no | 菜单栏是否可见
+
+outerHeight | pixel value | 设定窗口(包括装饰边框)的像素高度
+
+outerWidth | pixel value | 设定窗口(包括装饰边框)的像素宽度
+
+resizable | yes/no | 窗口大小是否可调整
+
+screenX | pixel value | 窗口距屏幕左边界的像素长度
+
+screenY | pixel value | 窗口距屏幕上边界的像素长度
+
+scrollbars | yes/no | 窗口是否可有滚动栏
+
+titlebar | yes/no | 窗口题目栏是否可见
+
+toolbar | yes/no | 窗口工具栏是否可见
+
+Width | pixel value | 窗口的像素宽度
+
+z-look | yes/no | 窗口被激活后是否浮在其它窗口之上
+
+window.showModalDialog使用手册
+
+基本介绍：
+
+showModalDialog() (IE 4+ 支持)
+
+showModelessDialog() (IE 5+ 支持)
+
+window.showModalDialog()方法用来创建一个显示HTML内容的模态对话框。
+
+window.showModelessDialog()方法用来创建一个显示HTML内容的非模态对话框。
+
+使用方法：
+
+vReturnValue = window.showModalDialog(sURL [, vArguments] [,sFeatures])
+
+vReturnValue = window.showModelessDialog(sURL [, vArguments] [,sFeatures])
+
+参数说明：
+
+sURL--
+
+必选参数，类型：字符串。用来指定对话框要显示的文档的URL。
+
+vArguments--
+
+可选参数，类型：变体。用来向对话框传递参数。传递的参数类型不限，包括数组
+
+等。对话框通过window.dialogArguments来取得传递进来的参数。
+
+sFeatures--
+
+可选参数，类型：字符串。用来描述对话框的外观等信息，可以使用以下的一个或
+
+几个，用分号“;”隔开。
+
+1.dialogHeight :对话框高度，不小于１００px，ＩＥ４中dialogHeight 和 dialogWidth 默
+
+认的单位是em，而ＩＥ５中是px，为方便其见，在定义modal方式的对话框
+
+时，用px做单位。
+
+2.dialogWidth: 对话框宽度。
+
+3.dialogLeft: 离屏幕左的距离。
+
+4.dialogTop: 离屏幕上的距离。
+
+5.center: {yes | no | 1 | 0 }：窗口是否居中，默认yes，但仍可以指定高度和宽度。
+
+6.help: {yes | no | 1 | 0 }：是否显示帮助按钮，默认yes。
+
+7.resizable: {yes | no | 1 | 0 } ［ＩＥ５＋］：是否可被改变大小。默认no。
+
+8.status: {yes | no | 1 | 0 } ［IE5+］：是否显示状态栏。默认为yes[
+
+Modeless]或no[Modal]。
+
+9.scroll:{ yes | no | 1 | 0 | on | off }：指明对话框是否显示滚动条。默认为yes。
+
+下面几个属性是用在HTA中的，在一般的网页中一般不使用。
+
+10.dialogHide:{ yes | no | 1 | 0 | on | off }：在打印或者打印预览时对话框是否隐藏。
+
+默认为no。
+
+11.edge:{ sunken | raised }：指明对话框的边框样式。默认为raised。
+
+12.unadorned:{ yes | no | 1 | 0 | on | off }：默认为no。
+
+参数传递：
+
+1.要想对话框传递参数，是通过vArguments来进行传递的。类型不限制，对于字符
+
+串类型，最大为4096个字符。也可以传递对象，例如：
+
+-------------------------------
+
+parent.htm
+
+<script>
+
+var obj = new Object();
+
+obj.name="51js";
+
+window.showModalDialog("modal.htm",obj,"dialogWidth=200px;dialogHeight=100px");
+
+</script>
+
+modal.htm
+
+<script>
+
+var obj = window.dialogArguments
+
+alert("您传递的参数为：" + obj.name)
+
+</script>
+
+-------------------------------
+
+2.可以通过window.returnValue向打开对话框的窗口返回信息，当然也可以是对象。
+
+例如：
+
+------------------------------
+
+parent.htm
+
+<script>
+
+str =window.showModalDialog("modal.htm",,"dialogWidth=200px;dialogHeight=100px");
+
+alert(str);
+
+</script>
+
+modal.htm
+
+<script>
+
+window.returnValue="http//blog.csdn.net/marsmao";
+
+</script>

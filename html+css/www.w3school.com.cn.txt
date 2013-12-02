@@ -1,0 +1,120 @@
+<bgsound src="http://www.w3school.com.cn/media/beatles.mid">
+
+使用 <img> 元素
+Internet Explorer 支持 <img> 元素中的 dynsrc 属性。
+该元素的作用是在网页中嵌入多媒体元素：
+<img dynsrc="horse.wav" />上面的代码片断为网页设置了一个嵌入的 WAVE 文件。
+
+使用 <embed> 元素
+Internet Explorer 和 Netscape 都支持 <embed> 元素。
+该元素的作用是在网页中嵌入多媒体元素：
+<embed src="beatles.mid" />上面的代码片断为网页设置了一个嵌入的 MIDI 文件。
+
+<html>
+<body>
+
+<h2>Beatles Embedded</h2>
+
+<embed
+src="/media/beatles.mid"
+width="50%"
+height="50%">
+</embed>
+
+</body>
+</html>
+
+使用 <object> 元素
+Internet Explorer 和 Netscape 都支持 <object> 元素。
+该元素的作用是在网页中嵌入多媒体元素：
+<object
+classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95">
+<param name="FileName" value="liar.wav" />
+</object>
+上面的代码片断在网页设置了一个嵌入的的 WAVE 文件。
+
+<html>
+<body>
+
+<h2>Playing The Object</h2>
+
+<object
+height="50%"
+width="50%"
+classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95">
+<param name="AutoStart" value="1" />
+<param name="FileName" value="/media/liar.wav" />
+</object>
+
+</body>
+</html>
+
+
+在 Web 上播放视频
+
+使用 <img> 元素
+Internet Explorer 支持 <img> 元素中的 dynsrc 属性。
+该元素的作用是在网页中嵌入多媒体元素：
+<img dynsrc="video.avi" />
+上面的代码片断为网页设置了一个嵌入的 AVI 文件。
+
+使用 <embed> 元素
+Internet Explorer 和 Netscape 都支持 <embed> 元素。
+该元素的作用是在网页中嵌入多媒体元素：
+<embed src="video.avi" />
+上面的代码片断为网页设置了一个嵌入的 AVI 文件。
+
+使用 <object> 元素
+Internet Explorer 和 Netscape 都支持 <object> 元素。
+该元素的作用是在网页中嵌入多媒体元素：
+<object data="video.avi" type="video/avi" />
+
+
+Object 元素
+
+显示图片
+你可以显示一幅图片：
+<object height="100%" width="100%"
+type="image/jpeg" data="audi.jpeg">
+</object>
+
+显示网页
+您可以显示一张网页：
+<object type="text/html" height="100%" width="100%"
+data="http://www.w3school.com.cn">
+</object>
+
+播放视频
+你可以播放视频：
+<object
+classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95">
+<param name="FileName" value="3d.wmv" />
+</object>
+
+显示日历
+您可以显示日历：
+<object width="100%" height="80%"
+classid="clsid:8E27C92B-1264-101C-8A2F-040224009C02">
+<param name="BackColor" value="14544622">
+<param name="DayLength" value="1">
+</object>
+
+显示图形：
+你可以显示图形：
+<object width="200" height="200"
+classid="CLSID:369303C2-D7AC-11D0-89D5-00A0C90833E6">
+<param name="Line0001"
+value="setFillColor(255, 0, 255)">
+<param name="Line0002"
+value="Oval(-100, -50, 200, 100, 30)">
+</object>
+
+显示 Flash
+您还可以显示 flash 动画：
+<object width="400" height="40"
+classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+codebase="http://download.macromedia.com
+/pub/shockwave/cabs/flash/swflash.cab#4,0,0,0">
+<param name="SRC" value="bookmark.swf">
+<embed src="bookmark.swf" width="400" height="40"></embed>
+</object>

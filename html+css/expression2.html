@@ -1,0 +1,8 @@
+<style type="text/css">
+#test img{ padding:10px;}
+#test img{ width: expression(this.width > 50 ? (function(abc){abc.style.width = '50px';})(this)(this) : 'auto'); max-width: 50px;} 
+#test img{ border:20px solid #FFCC00}
+</style>
+<div id="test">
+ <img src="http://www.zishu.cn/attachments/month_0702/n2007271255.gif" />
+</div>

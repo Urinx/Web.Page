@@ -1,0 +1,32 @@
+typeof
+
+显式类型转换
+parseInt() 从字符串中提取数字(从左到右，遇到非数字停止)
+当没有数字或开头不是数字时，返回NaN
+parseFloat() 提取浮点数
+
+isNaN() 检测
+
+隐式类型转换
+== 先把两边的转成一样的类型，然后比较
+=== 不转换，直接比较
+-,*,/ 转换
+
+arguments
+.currentStyle.  IE下
+getComputedStyle() Fx
+
+array.length 可赋值
+添加
+.push(..)
+.unshift(..)
+删除
+.pop()
+.shift()
+
+.splice(起始位置，长度，'','',...)
+
+.sort()
+.concat() 数组连接
+.join()
+str.split()

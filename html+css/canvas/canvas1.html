@@ -1,0 +1,54 @@
+<meta charset="utf-8">
+<style type="text/css">
+body{
+	background: black;
+}
+canvas{
+	background: white;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function(){
+	var canvas=document.getElementsByTagName('canvas')[0];
+	var can=canvas.getContext('2d');
+
+	can.save();
+
+	can.fillStyle='red';
+	can.strokeStyle='blue';
+	can.lineWidth=5;
+	can.lineJoin='bevel';//边界的连接点样式:miter默认,round圆角,bevel斜线
+	can.lineCap='round';//直线端点样式:butt默认,round圆角,square高度多出宽一半的值
+	//填充的矩形
+	can.fillRect(50,50,100,100);
+
+	//边框的矩形
+	can.strokeRect(50,50,100,100);
+
+	//绘制直线
+	can.beginPath();
+	can.moveTo(100,100);
+	can.lineTo(200,200);
+	can.lineTo(300,200);
+	can.closePath();
+	can.stroke();
+
+	can.restore();
+
+	can.beginPath();
+	can.moveTo(100,150);//.rect(100,100,100,100)
+	can.lineTo(200,250);
+	can.lineTo(300,250);
+	can.closePath();
+	can.fill();
+
+	can.clearRect(0,0,100,100);
+
+
+}
+</script>
+
+<canvas width="800" height="500">
+	(●'◡'●)嘻嘻，你的浏览器不支持我哦
+</canvas>

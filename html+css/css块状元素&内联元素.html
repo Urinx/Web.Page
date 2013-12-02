@@ -1,0 +1,28 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<style type="text/css">
+div{
+	width: 50px;
+	background: gray;
+	display: inline;/*重点！！！*/
+}
+
+.bg{
+	width: 1200px;
+	height: 1000px;
+	display: block;
+	background-color: gray;
+	background-image: url(http://b.hiphotos.baidu.com/album/w%3D2048/sign=12b71e21a08b87d65042ac1f33302938/6c224f4a20a44623a85c09729922720e0cf3d708.jpg);
+	background-repeat: no-repeat;
+	/*background-position: right bottom;
+	background-position: 10px 20px; x y*/
+	background-position: center center;
+	/*设置图片是否滚动 (scroll/fixed)*/
+	background-attachment: scroll;
+}
+
+</style>
+<p>将block元素改为inline元素</p>
+<div>1</div><div style="background:blue">2</div>
+
+<p>background</p>
+<div class="bg">1</div>

@@ -1,0 +1,18 @@
+<table border="1" width="200" cellspacing="0">
+<tr>
+<td>
+<a href="code.html" target="">Code</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="page.html" target="">Page</a>
+</td>
+</tr>
+</table>
+
+<!--
+<frameset rows="" cols="" framespacing="框架间距" frameborder="1/0是否显示边框" border="" bordercolor="">
+<frame src="" name="" noresize="true/false是否允许改变框架尺寸" scrolling="yes/no/auto滚动条显示">
+</frameset>
+-->

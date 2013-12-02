@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<style type="text/css">
+body{
+	background: black;
+}
+canvas{
+	background: white;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function(){
+	var canvas=document.getElementsByTagName('canvas')[0];
+	var can=canvas.getContext('2d');
+
+	var x=400;
+	var y=250;
+	var r=200;
+	
+	for (var i = 0; i < 60; i++) {
+		can.moveTo(x,y);
+		can.arc(x,y,r,i*Math.PI/30,(i+1)*Math.PI/30,false);
+	};
+	can.stroke();
+}
+</script>
+
+<canvas width="800" height="500">
+	(●'◡'●)嘻嘻，你的浏览器不支持我哦
+</canvas>

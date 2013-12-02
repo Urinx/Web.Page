@@ -1,0 +1,82 @@
+<!--
+	<head>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	</head>
+
+	<style type="text/css">
+		@import url("main.css");
+	</style>占用空间，不兼容，最好不用，但可以用在css中导入其他的css文件
+-->
+<style>
+p{
+	color:red;
+}
+span{
+	color: green;
+	font-size: 0.5em;
+}
+div{
+	color:blue;
+	width: 200px;
+	height: 50px;
+	background: gray;
+
+	font-size: 20px;
+	font-family: Arial,'宋体';
+	font-style: normal;/*italic斜体*/
+	font-weight: normal;/*bord粗体*/
+
+	line-height: 50px;/*150%*/
+
+	text-decoration: none;
+	/*underline[下划线]overline[上划线]line-through[删除线]*/
+	text-indent: 2em;
+	/*设置对象文本缩进，可以为负值*/
+	text-align: left;
+	/*center,right*/
+	/*文本水平对齐方式*/
+	text-transform: none;
+	/*capitalize[首字大写]uppercase[转换成大写]lowercase[转换成小写]*/
+	/*文本大小写控制*/
+
+	letter-spacing: normal;
+	/*..px[字符间距]*/
+	word-spacing: normal;
+	/*..px[单词间距]*/
+	white-space: normal;
+	/*pre[换行和空白受保护]nowrap[强制在同一行显示]*/
+	/*对象空白处理*/
+	vertical-align: sub;
+	/*sub[下标]super[上标]top[顶端对齐]text-bottom[底端对齐]*/
+	/*元素垂直对齐方式*/
+
+}
+
+</style>
+<h1>This is a head.</h1>
+<div><p>ABCDEFG</p></div>
+<div>css伪类</div>
+<pre>
+未访问的链接 a:link{}
+已访问的链接 a:visited{}
+鼠标移到链接 a:hover{}
+鼠标按下链接 a:active{}
+设置对象在成为输入焦点 xx:focus{}
+
+类的顺序 L->V->H->A
+   
+其它
+div.dudu{}
+< div class="dudu">xxxxxx< /div>
+
+div#dudu{}
+< div id="dudu">xxxxxx< /div>
+
+div p{}
+< div><p>xxxxxx</p>< /div>
+
+*{}
+对所有元素进行设置，但效率低
+
+</pre>
+  
