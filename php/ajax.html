@@ -1,0 +1,16 @@
+Your Name:<input type="text" onkeyup="ajax(this.value);">
+<p id="backw"></p>
+
+<script type="text/javascript">
+function ajax(str){
+	var xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			document.getElementById('backw').innerHTML=xmlhttp.responseText;
+		};
+	}
+	url='ajax-response.php?name='+str;
+	xmlhttp.open('GET',url,true);
+	xmlhttp.send();
+}
+</script>
