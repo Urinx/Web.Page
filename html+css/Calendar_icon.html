@@ -1,0 +1,134 @@
+<head>
+	<title>Calendar Icon</title>
+	<style type="text/css">
+	body{
+		background-color: #1c1c1c;
+	}
+	time.icon{
+		font-size: 1em;
+		display: block;
+		width: 7em;
+		height: 7em;
+		background-color: #fff;
+		border-radius: 0.6em;
+		box-shadow: 0 1px 0 #bdbdbd,0 2px 0 #fff,0 3px 0 #bdbdbd,0 4px 0 #fff,0 5px 0 #bdbdbd;
+		overflow: hidden;
+		/*居中*/
+		position: absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+		margin: auto;
+	}
+	time.icon *{
+		display: block;
+		width: 100%;
+		font-size: 1em;
+		font-weight: bold;
+		font-style: normal;
+		text-align: center;
+	}
+	time.icon strong{
+		position: absolute;
+		top: 0;
+		padding: 0.4em 0;
+		color: #fff;
+		background-color: #fd9f1b;
+		border-bottom: 1px dashed #f37302;
+		box-shadow: 0 2px 0 #fd9f1b;
+	}
+	time.icon em{
+		position: absolute;
+		bottom: 0.3em;
+		color: #fd9f1b;
+	}
+	time.icon span{
+		font-size: 2.8em;
+		letter-spacing: -0.05em;
+		padding-top:0.8em;
+		color: #2f2f2f;
+	}
+	</style>
+	<script type="text/javascript">
+	var time_set=function(){
+		var today=new Date();
+		var t=document.querySelector('time');
+		var month,day;
+		switch(today.getMonth()){
+			case 0:
+				month='January';
+				break;
+			case 1:
+				month='February';
+				break;
+			case 2:
+				month='March';
+				break;
+			case 3:
+				month='April';
+				break;
+			case 4:
+				month='May';
+				break;
+			case 5:
+				month='June';
+				break;
+			case 6:
+				month='July';
+				break;
+			case 7:
+				month='August';
+				break;
+			case 8:
+				month='September';
+				break;
+			case 9:
+				month='October';
+				break;
+			case 10:
+				month='November';
+				break;
+			case 11:
+				month='December';
+				break;
+		}
+		switch (today.getDay())
+		{
+			case 0:
+			  day="Sunday";
+			  break;
+			case 1:
+			  day="Monday";
+			  break;
+			case 2:
+			  day="Tuesday";
+			  break;
+			case 3:
+			  day="Wednesday";
+			  break;
+			case 4:
+			  day="Thursday";
+			  break;
+			case 5:
+			  day="Friday";
+			  break;
+			case 6:
+			  day="Saturday";
+			  break;
+		}
+		t.querySelector('em').innerHTML=day;
+		t.querySelector('strong').innerHTML=month;
+		t.querySelector('span').innerHTML=today.getDate();
+	}
+	window.onload=time_set;
+	</script>
+</head>
+
+<body>
+	<time datetime="2014-09-20" class="icon">
+		<em>Saturday</em>
+		<strong>September</strong>
+		<span>20</span>
+	</time>
+</body>
