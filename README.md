@@ -1,13 +1,10 @@
 Web.Page
 ========
 
-ÕâÊÇ×Ô¼ºÑ§webĞ´µÄ´úÂë£¬ÀïÃæ°üº¬ÁËÁ·Ï°html,css,jsµÄ£¬ÒÔ¼°Ğ´µÄÒ»Ğ©DemoµÄ´úÂë£¬°üÀ¨Ò»Ğ©ºóÌ¨¡£
+è¿™æ˜¯è‡ªå·±å­¦webå†™çš„ä»£ç ï¼Œé‡Œé¢åŒ…å«äº†ç»ƒä¹ html,css,jsçš„ï¼Œä»¥åŠå†™çš„ä¸€äº›Demoçš„ä»£ç ï¼ŒåŒ…æ‹¬ä¸€äº›åå°ã€‚
 -----------------------------------------------------------------------------------------
 
-###¸öÈËÖ÷Ò³£º
-####http://1336006643.tk
-####http://paiplace.5gbfree.com/
-![paiplace](http://paiplace.5gbfree.com/ad/uri.png "paiplace")
+###ä¸ªäººä¸»é¡µï¼š
+####http://urinx.github.io/
 
-###´ó¼ÒÒ²¿ÉÒÔ¹Ø×¢ÎÒµÄÎ¢ĞÅ¹«ÖÚºÅ:urinx
-![urinx](http://paiplace.5gbfree.com/wechat/img/xiaou.jpg "urinx")
+###å¤§å®¶ä¹Ÿå¯ä»¥å…³æ³¨æˆ‘çš„å¾®ä¿¡å…¬ä¼—å·:[urinx](http://weixin.sogou.com/gzh?openid=oIWsFt6BhfHwKUIyFvNp6A6JEsGM)
